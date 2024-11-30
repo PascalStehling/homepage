@@ -1,13 +1,13 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
-import Layout from "@layouts/Layout.astro";
+import BackToPrevious from "@components/BackToPrevious.astro";
 import Container from "@components/Container.astro";
 import FormattedDate from "@components/FormattedDate.astro";
-import { readingTime } from "@lib/utils";
-import BackToPrevious from "@components/BackToPrevious.astro";
+import Giscus from "@components/Giscus.astro";
 import PostNavigation from "@components/PostNavigation.astro";
 import TableOfContents from "@components/TableOfContents.astro";
-import Giscus from "@components/Giscus.astro";
+import Layout from "@layouts/Layout.astro";
+import { readingTime } from "@lib/utils";
 
 export async function getStaticPaths() {
   const posts = (await getCollection("blog"))
@@ -30,7 +30,9 @@ function getPostIndex(slug: string): number {
 
 function getNextPost(slug: string): Props | null {
   const postIndex = getPostIndex(slug);
-  return postIndex !== -1 && postIndex < posts.length - 1 ? posts[postIndex + 1] : null;
+  return postIndex !== -1 && postIndex < posts.length - 1
+    ? posts[postIndex + 1]
+    : null;
 }
 
 function getPrevPost(slug: string): Props | null {
@@ -87,9 +89,10 @@ const { Content, headings } = await post.render();
       <div class="mt-24">
         <PostNavigation prevPost={prevPost} nextPost={nextPost} />
       </div>
-      <div class="mt-24">
+      <!-- TODO: Add these comments back in -->
+      <!-- <div class="mt-24">
         <Giscus />
-      </div>
+      </div> -->
     </article>
   </Container>
 </Layout>

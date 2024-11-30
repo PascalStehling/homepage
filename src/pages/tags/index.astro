@@ -1,14 +1,15 @@
 ---
 import { getCollection } from "astro:content";
-import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
 import { TAGS } from "@consts";
+import Layout from "@layouts/Layout.astro";
 import Image from "astro/components/Image.astro";
 
-const blog = (await getCollection("blog"))
-  .filter((post) => !post.data.draft);
+const blog = (await getCollection("blog")).filter((post) => !post.data.draft);
 
-const tags =  blog.flatMap(post => post.data.tags).filter((tag, index, self) => self.indexOf(tag) === index);
+const tags = blog
+  .flatMap((post) => post.data.tags)
+  .filter((tag, index, self) => self.indexOf(tag) === index);
 ---
 
 <Layout title={TAGS.TITLE} description={TAGS.DESCRIPTION}>

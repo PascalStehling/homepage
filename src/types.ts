@@ -4,7 +4,7 @@ export type Site = {
   EMAIL: string;
   NUM_POSTS_ON_HOMEPAGE: number;
   NUM_PUBLICATIONS_ON_HOMEPAGE: number;
-  SITEURL: string,
+  SITEURL: string;
 };
 
 export type Metadata = {

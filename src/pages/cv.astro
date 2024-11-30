@@ -1,18 +1,56 @@
 ---
-import { getCollection } from "astro:content";
-import Layout from "@layouts/Layout.astro";
+import CVCard from "@components/CVCard.astro";
 import Container from "@components/Container.astro";
 import { CV } from "@consts";
-import CVCard from "@components/CVCard.astro";
+import Layout from "@layouts/Layout.astro";
 
 // TO Modify
 const works = [
-  {company:"Company A", time: "2022-Present", job_title: "Research Scientist", location: "London, UK", description: "Your Notes about the job"},
-  {company:"Company A", time: "2022-Present", job_title: "Research Scientist", location: "London, UK", description: "Your Notes about the job"},
-]
+  {
+    company: "Catenion",
+    time: "2020-present",
+    job_title: "Senior Data Architect",
+    location: "Berlin, Germany",
+    description: "Started as Data Science working student in 2020. After finishing my Data Science Master, I started working full time. While working there, my focus shifted from Data Science to Data Engineering and later even more to Data Architecture. But next to my main work and Data Pipelines and improving the Data Architecture, I also build some Web Apps, based on the data and manage the whole IT Infrastructure for the Data Unit. Over the last year I started to manage a small Data Team with two working students.",
+  },
+  {
+    company: "Sopra Steria",
+    time: "2019-2020",
+    job_title: "Data Science Working Student",
+    location: "Berlin, Germany",
+    description: "A working student position for one Semester. Mostly some AI & Data Science research, but no real projects came up, so it got quite boring. Because of that, I switched after half a year :D",
+  },
+  {
+    company: "Helmholtz-Zentrum Berlin (HZB)",
+    time: "2016-2019",
+    job_title: "Computer Science Apprentice",
+    location: "Berlin Germany",
+    description: "As part of my dual study program, HZB was the practice partner.",
+  },
+];
 const educations = [
-  {school:"University 1", time: "2022-Present", job_title: "BEng in Electronic Information Engineering", location: "London, UK", description: "Your Notes about the study"},
-]
+  {
+    school: "Hochschule Wismar, distance learning",
+    time: "2022-2024",
+    job_title: "M.Eng in Cyber Security and Digital Forensics",
+    location: "Wismar/Hamburg/Berlin, Germany",
+    description: "Because I was bored and I love to learn, I started a second Master Program in Cyber Security. I rediscovered my love to Algebra, because of which I wrote my Master Thesis on Homomorphic Encryption with Module-Learning with errors (M-LWE). Graduated with an overall grade of 1.3 (again :D)",
+  },
+  {
+    school: "Berliner Hochschule für Technik (BHT)",
+    time: "2019-2021",
+    job_title: "M.Sc. in Data Science",
+    location: "Berlin, Germany",
+    description: "A very practical Master program, where I learned a lot about different AI models and also underlying infrastructure. Best course was about Virtualization, especially containers, which I still use on a daily bases. (Big fan of Dev Containers). Graduated with an overall grade of 1.3 and distinction",
+  },
+  {
+    school: "Hochschule für Wirtschaft und Recht (HWR)",
+    time: "2016-2019",
+    job_title: "B.Sc. in Computer Science",
+    location: "Berlin, Germany",
+    description: "As part of my dual study program, HWR was the university partner.",
+  },
+];
 ---
 
 <Layout title={CV.TITLE} description={CV.DESCRIPTION}>
