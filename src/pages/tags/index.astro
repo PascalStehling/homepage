@@ -3,7 +3,6 @@ import { getCollection } from "astro:content";
 import Container from "@components/Container.astro";
 import { TAGS } from "@consts";
 import Layout from "@layouts/Layout.astro";
-import Image from "astro/components/Image.astro";
 
 const blog = (await getCollection("blog")).filter((post) => !post.data.draft);
 

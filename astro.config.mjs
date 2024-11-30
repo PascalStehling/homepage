@@ -13,7 +13,7 @@ import remarkToc from "remark-toc";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "pascal.stehl.ing",
+  site: "https://stehl.ing",
   integrations: [tailwind(), sitemap(), mdx({
     shikiConfig: {
       theme: "css-variables",
