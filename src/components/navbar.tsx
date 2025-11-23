@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import { socialItems } from "@/lib/personal-data";
 
 const navItems = [
   { name: "Home", path: "/" },
@@ -45,6 +46,21 @@ export function Navbar() {
                 )}
               >
                 {item.name}
+              </Link>
+            ))}
+          </div>
+
+          <div className="hidden md:flex items-center gap-2 border-l border-border pl-6 ml-2">
+            {socialItems.map((item) => (
+              <Link
+                key={item.name}
+                href={item.path}
+                target={item.target}
+                rel={item.rel}
+                className="p-2 rounded-md hover:bg-accent transition-colors text-muted-foreground hover:text-foreground"
+                aria-label={item.name}
+              >
+                <item.icon className="h-5 w-5" />
               </Link>
             ))}
           </div>
@@ -95,6 +111,22 @@ export function Navbar() {
                 {item.name}
               </Link>
             ))}
+            
+            <div className="flex gap-4 mt-2 pt-4 border-t border-border">
+              {socialItems.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.path}
+                  target={item.target}
+                  rel={item.rel}
+                  className="flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <item.icon className="h-5 w-5" />
+                  {item.name}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       )}
