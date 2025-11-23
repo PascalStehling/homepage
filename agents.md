@@ -9,8 +9,10 @@ This is a personal portfolio website built with **Next.js (App Router)**, **Type
 - **Framework:** Next.js 14+ (App Router)
 - **Language:** TypeScript
 - **Styling:** Tailwind CSS v4 (Utility-first)
-- **Icons:** Lucide React
-- **Content Management:** Static data in `src/app/publications/data.ts`.
+- **Icons:** React Icons (`react-icons`)
+- **Content Management:** 
+    - Publications: `src/app/publications/data.ts`
+    - Personal Data (Skills, Socials): `src/lib/personal-data.ts`
 - **Theming:** `next-themes` (Dark/Light mode support)
 - **Package Manager:** npm
 
@@ -20,9 +22,13 @@ This is a personal portfolio website built with **Next.js (App Router)**, **Type
     - `about/`, `cv/`, `publications/`: Section pages.
     - `layout.tsx`: Root layout (includes Navbar, Footer, ThemeProvider).
     - `globals.css`: Global styles and Tailwind directives.
+    - `sitemap.ts`: Generates `sitemap.xml` for SEO.
+    - `robots.ts`: Generates `robots.txt` for SEO.
+    - `opengraph-image.tsx`: Generates the dynamic Open Graph image.
 - `src/components/`: Reusable UI components (Navbar, Footer, Cards).
 - `src/lib/`: Utility functions.
     - `utils.ts`: Helper for Tailwind class merging (`cn`) and date formatting.
+    - `personal-data.ts`: Centralized data for skills, interests, and social links.
 - `public/`: Static assets (images, PDFs).
 
 ## Key Conventions
@@ -35,11 +41,12 @@ This is a personal portfolio website built with **Next.js (App Router)**, **Type
 
 ### 2. Components
 - Use **Functional Components** with TypeScript interfaces for props.
-- **Icons:** Use `lucide-react`. Import specific icons (e.g., `import { ArrowRight } from "lucide-react"`).
+- **Icons:** Use `react-icons`. Prefer `react-icons/lu` (Lucide) for UI elements and `react-icons/si` (Simple Icons) for brand logos.
 - **Images:** Use `next/image` for all images. Ensure `width` and `height` are provided or use `fill` with a parent container.
 
 ### 3. Content
-- Content is stored in `src/app/publications/data.ts` as a static array.
+- **Publications:** Stored in `src/app/publications/data.ts`.
+- **Personal Data:** Skills, interests, and social links are in `src/lib/personal-data.ts`.
 - **Fetching:** Import the data directly in Server Components.
 
 ### 4. Routing
@@ -58,6 +65,14 @@ This is a personal portfolio website built with **Next.js (App Router)**, **Type
 1. Open `src/app/publications/data.ts`.
 2. Add a new object to the `publications` array.
 
+### Updating Skills or Social Links
+1. Open `src/lib/personal-data.ts`.
+2. Update the `mainSkills`, `previousExperience`, `interests`, or `socialItems` arrays.
+3. Ensure you import the correct icon from `react-icons` if adding a new item.
+
+### Updating SEO
+- **Sitemap:** `src/app/sitemap.ts` automatically includes static routes and publications. Update the `routes` array if adding new static pages.
+- **Metadata:** Update `src/app/layout.tsx` for global metadata.
 
 ### Modifying the Design
 - **Theme Colors:** Adjusted in `src/app/globals.css` (CSS variables) or `tailwind.config.ts` (if customized).

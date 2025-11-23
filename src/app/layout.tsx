@@ -17,8 +17,35 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Pascal Stehling | Data Architect",
-  description: "Personal website of Pascal Stehling, Data Engineer and Data Architect.",
+  metadataBase: new URL("https://stehl.ing"),
+  title: {
+    default: "Pascal Stehling | Data Architect",
+    template: "%s | Pascal Stehling",
+  },
+  description: "Personal website of Pascal Stehling, Data Engineer and Data Architect based in Potsdam, Germany.",
+  openGraph: {
+    title: "Pascal Stehling | Data Architect",
+    description: "Personal website of Pascal Stehling, Data Engineer and Data Architect based in Potsdam, Germany.",
+    url: "https://stehl.ing",
+    siteName: "Pascal Stehling",
+    locale: "en_US",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  twitter: {
+    title: "Pascal Stehling",
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({
