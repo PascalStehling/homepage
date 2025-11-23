@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { formatDate } from "@/lib/utils";
-import { ArrowUpRight } from "lucide-react";
+import { LuArrowUpRight } from "react-icons/lu";
 import { Publication } from "@/app/publications/data";
 
 interface PublicationCardProps {
@@ -36,12 +36,12 @@ export function PublicationCard({ slug, metadata }: PublicationCardProps) {
       <div className="flex flex-wrap gap-2 pt-2 relative z-10">
         {metadata.paperURL && (
            <a href={metadata.paperURL.replace(/^.*:\s*/, '')} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-sm font-medium text-primary hover:underline">
-             Paper <ArrowUpRight className="ml-1 h-3 w-3" />
+             Paper <LuArrowUpRight className="ml-1 h-3 w-3" />
            </a>
         )}
         {metadata.codeURL && (
            <a href={metadata.codeURL.replace(/^.*:\s*/, '')} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-sm font-medium text-primary hover:underline">
-             Code <ArrowUpRight className="ml-1 h-3 w-3" />
+             Code <LuArrowUpRight className="ml-1 h-3 w-3" />
            </a>
         )}
       </div>

@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { interests, mainSkills, previousExperience } from "@/lib/personal-data";
 
 const works = [
   {
@@ -96,6 +97,56 @@ export default function CV() {
           {educations.map((edu, i) => (
             <TimelineItem key={i} item={edu} last={i === educations.length - 1} />
           ))}
+        </div>
+      </section>
+
+      <section>
+        <h2 className="text-2xl font-bold tracking-tight mb-8">Skills</h2>
+        <div className="space-y-6">
+          <div className="space-y-3">
+            <h3 className="font-semibold text-lg">Main Skills</h3>
+            <div className="flex flex-wrap gap-2">
+              {mainSkills.map((skill) => (
+                <span
+                  key={skill.name}
+                  className="inline-flex items-center rounded-md border border-transparent bg-primary/10 px-2.5 py-0.5 text-sm font-semibold text-primary transition-colors hover:bg-primary/20"
+                >
+                  <skill.icon className="mr-1.5 h-3.5 w-3.5" />
+                  {skill.name}
+                </span>
+              ))}
+            </div>
+          </div>
+          
+          <div className="space-y-3">
+            <h3 className="font-semibold text-lg text-muted-foreground">Previous Experience</h3>
+            <div className="flex flex-wrap gap-2">
+              {previousExperience.map((skill) => (
+                <span
+                  key={skill.name}
+                  className="inline-flex items-center rounded-md border border-transparent bg-muted px-2.5 py-0.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted/80"
+                >
+                  <skill.icon className="mr-1.5 h-3.5 w-3.5" />
+                  {skill.name}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="font-semibold text-lg">Interests</h3>
+            <div className="flex flex-wrap gap-2">
+              {interests.map((interest) => (
+                <span
+                  key={interest.name}
+                  className="inline-flex items-center rounded-md border border-transparent bg-secondary px-2.5 py-0.5 text-sm font-medium text-secondary-foreground transition-colors hover:bg-secondary/80"
+                >
+                  <interest.icon className="mr-1.5 h-3.5 w-3.5" />
+                  {interest.name}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
     </div>

@@ -1,7 +1,7 @@
 import { publications } from "@/app/publications/data";
 import { formatDate } from "@/lib/utils";
 import Link from "next/link";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { LuArrowLeft, LuArrowUpRight } from "react-icons/lu";
 import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
@@ -22,7 +22,7 @@ export default async function PublicationPost({ params }: { params: Promise<{ sl
     <article className="max-w-3xl mx-auto space-y-8">
       <div className="space-y-6">
         <Link href="/publications" className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors">
-          <ArrowLeft className="mr-2 h-4 w-4" />
+          <LuArrowLeft className="mr-2 h-4 w-4" />
           Back to publications
         </Link>
         
@@ -50,12 +50,12 @@ export default async function PublicationPost({ params }: { params: Promise<{ sl
           <div className="flex flex-wrap gap-4 pt-2">
             {post.paperURL && (
                <a href={post.paperURL.replace(/^.*:\s*/, '')} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-4 py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors text-sm font-medium">
-                 Read Paper <ArrowUpRight className="ml-2 h-4 w-4" />
+                 Read Paper <LuArrowUpRight className="ml-2 h-4 w-4" />
                </a>
             )}
             {post.codeURL && (
                <a href={post.codeURL.replace(/^.*:\s*/, '')} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-4 py-2 rounded-md border border-border hover:bg-accent transition-colors text-sm font-medium">
-                 View Code <ArrowUpRight className="ml-2 h-4 w-4" />
+                 View Code <LuArrowUpRight className="ml-2 h-4 w-4" />
                </a>
             )}
           </div>

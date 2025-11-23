@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { publications } from "@/app/publications/data";
 import { PublicationCard } from "@/components/publication-card";
-import { ArrowRight } from "lucide-react";
+import { LuArrowRight } from "react-icons/lu";
+import { interests, mainSkills } from "@/lib/personal-data";
 
 export default function Home() {
   const recentPublications = publications
@@ -25,10 +26,34 @@ export default function Home() {
       </section>
 
       <section className="space-y-8">
+        <h2 className="text-2xl font-bold tracking-tight">Skills & Interests</h2>
+        <div className="flex flex-wrap gap-2">
+          {mainSkills.map((skill) => (
+            <span
+              key={skill.name}
+              className="inline-flex items-center rounded-md border border-transparent bg-primary/10 px-2.5 py-0.5 text-sm font-semibold text-primary transition-colors hover:bg-primary/20"
+            >
+              <skill.icon className="mr-1.5 h-3.5 w-3.5" />
+              {skill.name}
+            </span>
+          ))}
+          {interests.map((interest) => (
+            <span
+              key={interest.name}
+              className="inline-flex items-center rounded-md border border-transparent bg-secondary px-2.5 py-0.5 text-sm font-medium text-secondary-foreground transition-colors hover:bg-secondary/80"
+            >
+              <interest.icon className="mr-1.5 h-3.5 w-3.5" />
+              {interest.name}
+            </span>
+          ))}
+        </div>
+      </section>
+
+      <section className="space-y-8">
         <div className="flex items-center justify-between">
           <h2 className="text-2xl font-bold tracking-tight">Recent Publications</h2>
           <Link href="/publications" className="group flex items-center text-sm font-medium text-muted-foreground hover:text-foreground">
-            View all <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            View all <LuArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

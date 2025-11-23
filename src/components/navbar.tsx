@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Menu, Moon, Sun, X } from "lucide-react";
+import { LuMenu, LuMoon, LuSun, LuX } from "react-icons/lu";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { socialItems } from "@/lib/personal-data";
@@ -72,9 +72,9 @@ export function Navbar() {
               aria-label="Toggle theme"
             >
               {theme === "dark" ? (
-                <Sun className="h-5 w-5" />
+                <LuSun className="h-5 w-5" />
               ) : (
-                <Moon className="h-5 w-5" />
+                <LuMoon className="h-5 w-5" />
               )}
             </button>
           )}
@@ -85,9 +85,9 @@ export function Navbar() {
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
-              <X className="h-5 w-5" />
+              <LuX className="h-5 w-5" />
             ) : (
-              <Menu className="h-5 w-5" />
+              <LuMenu className="h-5 w-5" />
             )}
           </button>
         </div>
