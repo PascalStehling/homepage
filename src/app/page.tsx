@@ -2,7 +2,7 @@ import Link from "next/link";
 import { publications } from "@/app/publications/data";
 import { PublicationCard } from "@/components/publication-card";
 import { LuArrowRight } from "react-icons/lu";
-import { interests, mainSkills } from "@/lib/personal-data";
+import { interests, mainSkills, socialItems } from "@/lib/personal-data";
 
 export default function Home() {
   const recentPublications = publications
@@ -19,9 +19,39 @@ export default function Home() {
           <p>
             Hi, I'm Pascal Stehling, a Data Engineer and Data Architect living in Potsdam, a "suburb of Berlin", Germany.
           </p>
-          <p>
-            To learn more about me, you can find a <Link href="/cv" className="underline underline-offset-4 hover:text-foreground">short CV</Link> or a longer <Link href="/about" className="underline underline-offset-4 hover:text-foreground">about section</Link>.
+          <p className="text-muted-foreground">
+            I build mainly data pipelines, design data architectures, and occasionally tinker with web development. I love to learn new stuff and challenge myself :)
           </p>
+        </div>
+        
+        <div className="flex flex-wrap gap-4 items-center pt-2">
+          <Link 
+            href="/cv" 
+            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+          >
+            View CV
+          </Link>
+          <Link 
+            href="/about" 
+            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+          >
+            More About Me
+          </Link>
+          
+          <div className="flex items-center gap-2 ml-2 border-l border-border pl-4">
+            {socialItems.map((item) => (
+              <a
+                key={item.name}
+                href={item.path}
+                target={item.target}
+                rel={item.rel}
+                className="inline-flex items-center justify-center rounded-md p-2 text-muted-foreground hover:bg-accent hover:text-foreground transition-colors"
+                aria-label={item.name}
+              >
+                <item.icon className="h-5 w-5" />
+              </a>
+            ))}
+          </div>
         </div>
       </section>
 
