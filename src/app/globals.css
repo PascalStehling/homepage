@@ -2,18 +2,72 @@
 @plugin "@tailwindcss/typography";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Light Mode: Natural Stone / Wool */
+  --background: #f2f0e9; /* Warm beige, slightly lighter than before */
+  --foreground: #000000; /* Pure Black for maximum contrast */
+  --card: #fdfcf8;       /* Off-white card */
+  --card-foreground: #000000;
+  --popover: #fdfcf8;
+  --popover-foreground: #000000;
+  --primary: #292524;    /* Stone-800 */
+  --primary-foreground: #fafaf9;
+  --secondary: #e7e5e4;  /* Stone-200 */
+  --secondary-foreground: #000000;
+  --muted: #e7e5e4;
+  --muted-foreground: #1c1917; /* Stone-900 (Very dark grey) */
+  --accent: #e7e5e4;
+  --accent-foreground: #000000;
+  --destructive: #ef4444;
+  --destructive-foreground: #fafaf9;
+  --border: #a8a29e;     /* Stone-400 */
+  --input: #a8a29e;
+  --ring: #292524;
 }
 
 .dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  /* Dark Mode: Deep Forest / Night (Blue-Green, not Black) */
+  --background: #0f1c21; /* Deep Blue-Green (Cyan-950 variant) */
+  --foreground: #e2e8f0; /* Slate-200 */
+  --card: #16262c;       /* Lighter Blue-Green */
+  --card-foreground: #e2e8f0;
+  --popover: #0f1c21;
+  --popover-foreground: #e2e8f0;
+  --primary: #94a3b8;    /* Slate-400 */
+  --primary-foreground: #020617;
+  --secondary: #1e333b;  /* Dark Teal Surface */
+  --secondary-foreground: #e2e8f0;
+  --muted: #1e333b;
+  --muted-foreground: #94a3b8; /* Slate-400 */
+  --accent: #1e333b;
+  --accent-foreground: #e2e8f0;
+  --destructive: #7f1d1d;
+  --destructive-foreground: #e2e8f0;
+  --border: #233b45;     /* Visible border */
+  --input: #233b45;
+  --ring: #94a3b8;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }

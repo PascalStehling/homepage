@@ -52,25 +52,25 @@ function TimelineItem({ item, last }: { item: any; last?: boolean }) {
   return (
     <div className="relative pl-8 pb-12 last:pb-0">
       {!last && (
-        <div className="absolute left-[11px] top-6 bottom-0 w-px bg-neutral-200 dark:bg-neutral-800" />
+        <div className="absolute left-[11px] top-6 bottom-0 w-px bg-border" />
       )}
-      <div className="absolute left-0 top-1.5 h-6 w-6 rounded-full border-4 border-white dark:border-neutral-950 bg-neutral-200 dark:bg-neutral-800" />
+      <div className="absolute left-0 top-1.5 h-6 w-6 rounded-full border-4 border-background bg-border" />
       
       <div className="space-y-2">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-          <h3 className="font-semibold text-lg text-neutral-900 dark:text-neutral-100">
+          <h3 className="font-semibold text-lg text-foreground">
             {item.job_title || item.school}
           </h3>
-          <span className="text-sm font-mono text-neutral-500 dark:text-neutral-400 whitespace-nowrap">
+          <span className="text-sm font-mono text-muted-foreground whitespace-nowrap">
             {item.time}
           </span>
         </div>
         
-        <div className="text-sm font-medium text-neutral-700 dark:text-neutral-300">
+        <div className="text-sm font-medium text-foreground">
           {item.company || item.school} • {item.location}
         </div>
         
-        <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        <p className="text-muted-foreground leading-relaxed">
           {item.description}
         </p>
       </div>

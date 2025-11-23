@@ -24,7 +24,7 @@ export function Navbar() {
   }, []);
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-neutral-200 dark:border-neutral-800 bg-white/80 dark:bg-neutral-950/80 backdrop-blur-sm">
+    <nav className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-sm">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         <Link href="/" className="font-bold text-xl tracking-tight">
           Pascal Stehling
@@ -37,10 +37,10 @@ export function Navbar() {
                 key={item.path}
                 href={item.path}
                 className={cn(
-                  "text-sm font-medium transition-colors hover:text-black dark:hover:text-white",
+                  "text-sm font-medium transition-colors hover:text-foreground",
                   pathname === item.path
-                    ? "text-black dark:text-white"
-                    : "text-neutral-500 dark:text-neutral-400"
+                    ? "text-foreground"
+                    : "text-muted-foreground"
                 )}
               >
                 {item.name}
@@ -51,7 +51,7 @@ export function Navbar() {
           {mounted && (
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+              className="p-2 rounded-md hover:bg-accent transition-colors"
               aria-label="Toggle theme"
             >
               {theme === "dark" ? (

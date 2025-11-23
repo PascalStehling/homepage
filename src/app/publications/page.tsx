@@ -9,7 +9,7 @@ export default function Publications() {
     <div className="space-y-10">
       <div className="max-w-3xl">
         <h1 className="text-3xl font-bold tracking-tight mb-4">Publications</h1>
-        <p className="text-neutral-600 dark:text-neutral-400">
+        <p className="text-muted-foreground">
           A collection of my academic papers, theses, and other publications.
         </p>
       </div>
