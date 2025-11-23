@@ -17,7 +17,7 @@ This is a personal portfolio website built with **Next.js (App Router)**, **Type
 ## Directory Structure
 - `src/app/`: Application routes (Pages).
     - `page.tsx`: Home page.
-    - `about/`, `cv/`, `blog/`, `publications/`: Section pages.
+    - `about/`, `cv/`, `publications/`: Section pages.
     - `layout.tsx`: Root layout (includes Navbar, Footer, ThemeProvider).
     - `globals.css`: Global styles and Tailwind directives.
 - `src/components/`: Reusable UI components (Navbar, Footer, Cards).
@@ -51,7 +51,7 @@ This is a personal portfolio website built with **Next.js (App Router)**, **Type
 
 ### 4. Routing
 - Use standard Next.js App Router conventions.
-- Dynamic routes are handled via `[slug]` folders (e.g., `src/app/blog/[slug]/page.tsx`).
+- Dynamic routes are handled via `[slug]` folders (e.g., `src/app/publications/[slug]/page.tsx`).
 - Use `generateStaticParams` in dynamic routes to enable Static Site Generation (SSG).
 
 ## Common Tasks
