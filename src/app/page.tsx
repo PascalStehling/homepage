@@ -11,7 +11,7 @@ export default function Home() {
 
   return (
     <div className="space-y-16">
-      <section className="space-y-6">
+      <section className="space-y-6 animate-fade-in-up">
         <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-linear-to-r from-foreground to-stone-600 dark:to-stone-400">
           My little corner of the web
         </h1>
@@ -25,13 +25,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="space-y-8">
+      <section className="space-y-8 animate-fade-in-up delay-200">
         <h2 className="text-2xl font-bold tracking-tight">Skills & Interests</h2>
         <div className="flex flex-wrap gap-2">
           {mainSkills.map((skill) => (
             <span
               key={skill.name}
-              className="inline-flex items-center rounded-md border border-transparent bg-primary/10 px-2.5 py-0.5 text-sm font-semibold text-primary transition-colors hover:bg-primary/20"
+              className="inline-flex items-center rounded-md border border-transparent bg-primary/10 px-2.5 py-0.5 text-sm font-semibold text-foreground transition-colors hover:bg-primary/20"
             >
               <skill.icon className="mr-1.5 h-3.5 w-3.5" />
               {skill.name}
@@ -40,7 +40,7 @@ export default function Home() {
           {interests.map((interest) => (
             <span
               key={interest.name}
-              className="inline-flex items-center rounded-md border border-transparent bg-secondary px-2.5 py-0.5 text-sm font-medium text-secondary-foreground transition-colors hover:bg-secondary/80"
+              className="inline-flex items-center rounded-md border border-transparent bg-secondary px-2.5 py-0.5 text-sm font-medium text-foreground transition-colors hover:bg-secondary/80"
             >
               <interest.icon className="mr-1.5 h-3.5 w-3.5" />
               {interest.name}
@@ -49,7 +49,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="space-y-8">
+      <section className="space-y-8 animate-fade-in-up delay-500">
         <div className="flex items-center justify-between">
           <h2 className="text-2xl font-bold tracking-tight">Recent Publications</h2>
           <Link href="/publications" className="group flex items-center text-sm font-medium text-muted-foreground hover:text-foreground">

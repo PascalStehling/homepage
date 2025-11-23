@@ -10,7 +10,7 @@ interface PublicationCardProps {
 
 export function PublicationCard({ slug, metadata }: PublicationCardProps) {
   return (
-    <div className="group relative flex flex-col space-y-3 rounded-lg border border-border p-6 transition-colors hover:bg-accent">
+    <div className="group relative flex flex-col space-y-3 rounded-lg border border-border p-6 transition-all duration-300 hover:bg-accent hover:-translate-y-1 hover:shadow-lg">
       <div className="flex items-center justify-between">
         <span className="text-sm text-muted-foreground">
           {metadata.date ? new Date(metadata.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) : ''}
