@@ -1,0 +1,24 @@
+import { getAllPosts } from "@/lib/mdx";
+import { PublicationCard } from "@/components/publication-card";
+
+export default function Publications() {
+  const publications = getAllPosts("publications")
+    .sort((a, b) => new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime());
+
+  return (
+    <div className="space-y-10">
+      <div className="max-w-3xl">
+        <h1 className="text-3xl font-bold tracking-tight mb-4">Publications</h1>
+        <p className="text-neutral-600 dark:text-neutral-400">
+          A collection of my academic papers, theses, and other publications.
+        </p>
+      </div>
+      
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {publications.map((pub) => (
+          <PublicationCard key={pub.slug} {...pub} />
+        ))}
+      </div>
+    </div>
+  );
+}
