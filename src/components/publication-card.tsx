@@ -1,23 +1,14 @@
 import Link from "next/link";
 import { formatDate } from "@/lib/utils";
 import { ArrowUpRight } from "lucide-react";
+import { Publication } from "@/app/publications/data";
 
-interface PublicationProps {
+interface PublicationCardProps {
   slug: string;
-  metadata: {
-    title?: string;
-    description?: string;
-    date?: string;
-    authors?: string;
-    paperURL?: string;
-    codeURL?: string;
-    webURL?: string;
-    pub?: string;
-    [key: string]: any;
-  };
+  metadata: Publication;
 }
 
-export function PublicationCard({ slug, metadata }: PublicationProps) {
+export function PublicationCard({ slug, metadata }: PublicationCardProps) {
   return (
     <div className="group flex flex-col space-y-3 rounded-lg border border-neutral-200 dark:border-neutral-800 p-6 transition-colors hover:bg-neutral-50 dark:hover:bg-neutral-900">
       <div className="flex items-center justify-between">

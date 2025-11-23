@@ -1,9 +1,9 @@
-import { getAllPosts } from "@/lib/mdx";
+import { publications } from "@/app/publications/data";
 import { PublicationCard } from "@/components/publication-card";
 
 export default function Publications() {
-  const publications = getAllPosts("publications")
-    .sort((a, b) => new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime());
+  const sortedPublications = publications
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
     <div className="space-y-10">
@@ -15,10 +15,11 @@ export default function Publications() {
       </div>
       
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {publications.map((pub) => (
-          <PublicationCard key={pub.slug} {...pub} />
+        {sortedPublications.map((pub) => (
+          <PublicationCard key={pub.slug} slug={pub.slug} metadata={pub} />
         ))}
       </div>
     </div>
   );
 }
+

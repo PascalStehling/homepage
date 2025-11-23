@@ -10,7 +10,7 @@ This is a personal portfolio website built with **Next.js (App Router)**, **Type
 - **Language:** TypeScript
 - **Styling:** Tailwind CSS v4 (Utility-first)
 - **Icons:** Lucide React
-- **Content Management:** MDX (Markdown + JSX) via `next-mdx-remote` & `gray-matter`
+- **Content Management:** Static data in `src/app/publications/data.ts`.
 - **Theming:** `next-themes` (Dark/Light mode support)
 - **Package Manager:** npm
 
@@ -22,11 +22,7 @@ This is a personal portfolio website built with **Next.js (App Router)**, **Type
     - `globals.css`: Global styles and Tailwind directives.
 - `src/components/`: Reusable UI components (Navbar, Footer, Cards).
 - `src/lib/`: Utility functions.
-    - `mdx.ts`: Functions to read/parse MDX content from the file system.
     - `utils.ts`: Helper for Tailwind class merging (`cn`) and date formatting.
-- `content/`: Content files.
-    - `blog/`: Blog posts (.mdx).
-    - `publications/`: Publication entries (.mdx).
 - `public/`: Static assets (images, PDFs).
 
 ## Key Conventions
@@ -42,17 +38,14 @@ This is a personal portfolio website built with **Next.js (App Router)**, **Type
 - **Icons:** Use `lucide-react`. Import specific icons (e.g., `import { ArrowRight } from "lucide-react"`).
 - **Images:** Use `next/image` for all images. Ensure `width` and `height` are provided or use `fill` with a parent container.
 
-### 3. Content (MDX)
-- Content is stored in `content/{type}/{slug}.mdx`.
-- **Frontmatter:** Every MDX file must have frontmatter.
-    - **Blog:** `title`, `description`, `date`.
-    - **Publications:** `title`, `description`, `date`, `authors`, `pub` (venue), `paperURL`, `codeURL`, etc.
-- **Fetching:** Use `getAllPosts(type)` or `getPostBySlug(type, slug)` from `@/lib/mdx` to retrieve content in Server Components.
+### 3. Content
+- Content is stored in `src/app/publications/data.ts` as a static array.
+- **Fetching:** Import the data directly in Server Components.
 
 ### 4. Routing
 - Use standard Next.js App Router conventions.
 - Dynamic routes are handled via `[slug]` folders (e.g., `src/app/publications/[slug]/page.tsx`).
-- Use `generateStaticParams` in dynamic routes to enable Static Site Generation (SSG).
+- Use `generateStaticParams` in dynamic routes to enable Static Site Generation (SSG) by mapping over the static data.
 
 ## Common Tasks
 
@@ -61,17 +54,10 @@ This is a personal portfolio website built with **Next.js (App Router)**, **Type
 2. Add a `page.tsx` file.
 3. Add a link to `src/components/navbar.tsx`.
 
-### Adding a Blog Post
-1. Create a new file in `content/blog/my-post.mdx`.
-2. Add frontmatter:
-   ```yaml
-   ---
-   title: "My Post"
-   description: "Short summary"
-   date: "2025-01-01"
-   ---
-   ```
-3. Write content in Markdown/MDX.
+### Adding a Publication
+1. Open `src/app/publications/data.ts`.
+2. Add a new object to the `publications` array.
+
 
 ### Modifying the Design
 - **Theme Colors:** Adjusted in `src/app/globals.css` (CSS variables) or `tailwind.config.ts` (if customized).

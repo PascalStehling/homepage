@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { getAllPosts } from "@/lib/mdx";
+import { publications } from "@/app/publications/data";
 import { PublicationCard } from "@/components/publication-card";
 import { ArrowRight } from "lucide-react";
 
 export default function Home() {
-  const publications = getAllPosts("publications")
-    .sort((a, b) => new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime())
+  const recentPublications = publications
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 3);
 
   return (
@@ -32,11 +32,12 @@ export default function Home() {
           </Link>
         </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {publications.map((pub) => (
-            <PublicationCard key={pub.slug} slug={pub.slug} metadata={pub.metadata} />
+          {recentPublications.map((pub) => (
+            <PublicationCard key={pub.slug} slug={pub.slug} metadata={pub} />
           ))}
         </div>
       </section>
     </div>
   );
 }
+
