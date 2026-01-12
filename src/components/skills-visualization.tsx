@@ -1,5 +1,3 @@
-"use client";
-
 import { skillCategories } from "@/lib/personal-data";
 
 const proficiencyColors = {

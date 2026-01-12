@@ -1,5 +1,3 @@
-"use client";
-
 import { skillCategories, milestones, nonTechnicalInterests } from "@/lib/personal-data";
 import { LuGraduationCap, LuBriefcase, LuHeartHandshake } from "react-icons/lu";
 
