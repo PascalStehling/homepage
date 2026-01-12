@@ -235,6 +235,11 @@ export interface NonTechnicalInterest {
 
 export const nonTechnicalInterests: NonTechnicalInterest[] = [
   {
+    name: "Cooking",
+    description: "Classic menswear tailoring",
+    startYear: 2016,
+  },
+  {
     name: "Swing Dancing",
     description: "Lindy Hop and Charleston",
     startYear: 2024,
@@ -245,9 +250,14 @@ export const nonTechnicalInterests: NonTechnicalInterest[] = [
     startYear: 2025,
   },
   {
-    name: "Cooking",
-    description: "Classic menswear tailoring",
-    startYear: 2016,
+    name: "Sailing",
+    description: "Made my Sailing License on Wansee, Berlin",
+    startYear: 2025,
+  },
+  {
+    name: "Mushroom Hunting",
+    description: "Searching and Identifying Mushrooms in the forest",
+    startYear: 2025,
   },
 ];
 
@@ -268,3 +278,193 @@ export const milestones: Milestone[] = [
     type: "work" as const,
   })),
 ].sort((a, b) => a.startYear - b.startYear);
+
+/* ============================================================================
+   BOOKS - Single source of truth
+   ============================================================================ */
+export interface BookInput {
+  title: string;
+  author: string;
+  yearRead: number;
+  category: "fictional" | "non-fictional";
+  isbn?: string;
+  publisherURL?: string;
+  gutenbergURL?: string;
+}
+
+export interface Book extends BookInput {
+  slug: string;
+}
+
+function generateSlug(title: string, author: string): string {
+  const combined = `${title}-${author}`
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .trim();
+  return combined;
+}
+
+const booksInput: BookInput[] = [
+  // Image 1
+  {
+    title: "Hands-On Graph Analytics with Neo4j",
+    author: "Estelle Scifo",
+    yearRead: 2022,
+    category: "non-fictional",
+    isbn: "9781839212611",
+    publisherURL: "https://www.packtpub.com/en-us/product/hands-on-graph-analytics-with-neo4j-9781839212611"
+  },
+  {
+    title: "Quantentheorie in 30 Sekunden",
+    author: "Brian Clegg",
+    yearRead: 2015,
+    category: "non-fictional",
+    isbn: "9789089984906"
+  },
+  {
+    title: "Deutschland. Ein Wintermärchen",
+    author: "Heinrich Heine",
+    yearRead: 2023,
+    category: "fictional",
+    gutenbergURL: "https://www.gutenberg.org/ebooks/6079"
+  },
+  {
+    title: "Dr Jekyll & Mr. Hyde",
+    author: "Robert Louis Stevenson",
+    yearRead: 2023,
+    category: "fictional",
+    gutenbergURL: "https://www.gutenberg.org/ebooks/43"
+  },
+  {
+    title: "Bekenntnisse eines englischen Opiumessers",
+    author: "Thomas De Quincey",
+    yearRead: 2024,
+    category: "fictional",
+    gutenbergURL: "https://www.projekt-gutenberg.org/quincey/opiumess/opiumess.html"
+  },
+  {
+    title: "Designing Data-Intensive Applications",
+    author: "Martin Kleppmann",
+    yearRead: 2023,
+    category: "non-fictional",
+    isbn: "9781449373320",
+    publisherURL: "https://www.oreilly.com/library/view/designing-data-intensive-applications/9781491903063/"
+  },
+  {
+    title: "Vorkurs Informatik: Der Einstieg ins Informatikstudium",
+    author: "Heinrich Müller and Frank Weichert",
+    yearRead: 2016,
+    category: "non-fictional",
+    publisherURL: "https://link.springer.com/book/10.1007/978-3-658-36468-7"
+  },
+  {
+    title: "Die Buddenbrooks",
+    author: "Thomas Mann",
+    yearRead: 2025,
+    category: "fictional",
+    isbn: "9780679752608",
+    gutenbergURL: "https://archive.org/details/buddenbrooksverf34811gut"
+  },
+  {
+    title: "Der Zauberberg",
+    author: "Thomas Mann",
+    yearRead: 2025,
+    category: "fictional",
+    isbn: "9783596294336",
+    gutenbergURL: "https://www.gutenberg.org/ebooks/65661"
+  },
+  {
+    title: "Die Physik der unsichtbaren Dimensionen",
+    author: "Michio Kaku",
+    yearRead: 2016,
+    category: "non-fictional",
+    publisherURL: "https://www.rowohlt.de/buch/michio-kaku-die-physik-der-unsichtbaren-dimensionen-9783499615092"
+  },
+  {
+    title: "Data Matching: Concepts and Techniques for Record Linkage, Entity Resolution, and Duplicate Detection",
+    author: "Peter Christen",
+    yearRead: 2022,
+    category: "non-fictional",
+    isbn: "9783642311635",
+    publisherURL: "https://link.springer.com/book/10.1007/978-3-642-31164-2"
+  },
+  {
+    title: "Atomgewicht 500",
+    author: "Hans Dominik",
+    yearRead: 2021,
+    category: "fictional",
+    gutenbergURL: "https://www.projekt-gutenberg.org/dominik/atom500/atom500.html"
+  },
+  {
+    title: "Die Harzreise",
+    author: "Heinrich Heine",
+    yearRead: 2022,
+    category: "fictional",
+    gutenbergURL: "https://www.gutenberg.org/ebooks/24249"
+  },
+  {
+    title: "IT-Sicherheit: Konzepte - Verfahren - Protokolle",
+    author: "Claudia Eckert",
+    yearRead: 2023,
+    category: "non-fictional",
+    publisherURL: "https://link.springer.com/book/10.1007/978-3-658-26084-9"
+  },
+  {
+    title: "Knowledge Graphs: Fundamentals, Techniques, and Applications",
+    author: "Mayank Kejriwal, Craig A. Knoblock, Pedro Szekely",
+    yearRead: 2022,
+    category: "non-fictional",
+    isbn: "9780262045094",
+    publisherURL: "https://mitpress.mit.edu/9780262045094/knowledge-graphs/"
+  },
+  {
+    title: "Big Data: A Revolution That Will Transform How We Live, Work, and Think",
+    author: "Viktor Mayer-Schönberger and Kenneth Cukier",
+    yearRead: 2020,
+    category: "non-fictional",
+    isbn: "9780544227750",
+    publisherURL: "https://www.hachettebookgroup.com/"
+  },
+  {
+    title: "Drogen: Die Geschichte eines langen Krieges",
+    author: "Johann Hari",
+    yearRead: 2018,
+    category: "non-fictional",
+    publisherURL: "https://www.fischerverlage.de/buch/johann-hari-drogen-9783596034192"
+  },
+  {
+    title: "Power to the People: Wie wir mit Technologie die Demokratie neu erfinden",
+    author: "Georg Diez and Emanuel Heisenberg",
+    yearRead: 2024,
+    category: "non-fictional",
+    publisherURL: "https://www.hanser-literaturverlage.de/buecher/belletristik/power-to-the-people.html"
+  },
+  {
+    title: "Polizei- und Kriminalpsychologie",
+    author: "Birgitta Sticher",
+    yearRead: 2023,
+    category: "non-fictional",
+    publisherURL: "https://polizeiwissenschaft.de/"
+  },
+  {
+    title: "Immun: A Journey into the Mysterious System That Keeps You Alive",
+    author: "Philipp Dettmer",
+    yearRead: 2023,
+    category: "non-fictional",
+    isbn: "9780593241318",
+    publisherURL: "https://www.philippdettmer.net/immune"
+  },
+  {
+    title: "Pilz in Sicht ... und dann im Topf",
+    author: "Renate Volk and Fridhelm Volk",
+    yearRead: 2025,
+    category: "non-fictional"
+  }
+];
+
+export const books: Book[] = booksInput.map((book) => ({
+  ...book,
+  slug: generateSlug(book.title, book.author),
+}));

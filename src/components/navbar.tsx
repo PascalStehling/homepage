@@ -14,6 +14,7 @@ const navItems = [
   { name: "CV", path: "/cv" },
   { name: "Personal Timeline", path: "/skills" },
   { name: "Publications", path: "/publications" },
+  { name: "Books", path: "/books" },
 ];
 
 export function Navbar() {
