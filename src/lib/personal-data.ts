@@ -247,7 +247,7 @@ export const nonTechnicalInterests: NonTechnicalInterest[] = [
   {
     name: "Sewing",
     description: "Classic menswear tailoring",
-    startYear: 2025,
+    startYear: 2024,
   },
   {
     name: "Sailing",
@@ -311,7 +311,7 @@ const booksInput: BookInput[] = [
   {
     title: "Hands-On Graph Analytics with Neo4j",
     author: "Estelle Scifo",
-    yearRead: 2022,
+    yearRead: 2021,
     category: "non-fictional",
     isbn: "9781839212611",
     publisherURL: "https://www.packtpub.com/en-us/product/hands-on-graph-analytics-with-neo4j-9781839212611"
@@ -385,7 +385,7 @@ const booksInput: BookInput[] = [
   {
     title: "Data Matching: Concepts and Techniques for Record Linkage, Entity Resolution, and Duplicate Detection",
     author: "Peter Christen",
-    yearRead: 2022,
+    yearRead: 2021,
     category: "non-fictional",
     isbn: "9783642311635",
     publisherURL: "https://link.springer.com/book/10.1007/978-3-642-31164-2"
@@ -407,14 +407,14 @@ const booksInput: BookInput[] = [
   {
     title: "IT-Sicherheit: Konzepte - Verfahren - Protokolle",
     author: "Claudia Eckert",
-    yearRead: 2023,
+    yearRead: 2022,
     category: "non-fictional",
     publisherURL: "https://link.springer.com/book/10.1007/978-3-658-26084-9"
   },
   {
     title: "Knowledge Graphs: Fundamentals, Techniques, and Applications",
     author: "Mayank Kejriwal, Craig A. Knoblock, Pedro Szekely",
-    yearRead: 2022,
+    yearRead: 2021,
     category: "non-fictional",
     isbn: "9780262045094",
     publisherURL: "https://mitpress.mit.edu/9780262045094/knowledge-graphs/"
@@ -439,7 +439,7 @@ const booksInput: BookInput[] = [
     author: "Georg Diez and Emanuel Heisenberg",
     yearRead: 2024,
     category: "non-fictional",
-    publisherURL: "https://www.hanser-literaturverlage.de/buecher/belletristik/power-to-the-people.html"
+    publisherURL: "https://www.hanser-literaturverlage.de/buch/power-to-the-people-9783446266889-t-3194"
   },
   {
     title: "Polizei- und Kriminalpsychologie",
@@ -461,6 +461,212 @@ const booksInput: BookInput[] = [
     author: "Renate Volk and Fridhelm Volk",
     yearRead: 2025,
     category: "non-fictional"
+  },
+  {
+    title: "Die Sprache der Rechten",
+    author: "Heidrun Deborah Kämper",
+    yearRead: 2025,
+    category: "non-fictional",
+    isbn: "9783150145951",
+    publisherURL: "https://www.reclam.de/produktdetail/die-sprache-der-rechten-wie-sie-reden-und-was-sie-sagen-9783150146637"
+  },
+  {
+    title: "Schnelles Denken, Langsames Denken",
+    author: "Daniel Kahneman",
+    yearRead: 2024,
+    category: "non-fictional",
+    isbn: "978-3328100348",
+    publisherURL: "https://www.penguin.de/buecher/daniel-kahneman-schnelles-denken-langsames-denken/taschenbuch/9783328100348"
+  },
+  {
+    title: "Sein erster Fall: Teil 2 - Das Ende der Trilogie",
+    author: "Jan Philipp Zymny and Henry Frottey",
+    yearRead: 2019,
+    category: "fictional",
+    isbn: "9783954610204"
+  },
+  {
+    title: "Maschinelles Lernen",
+    author: "Jörg Frochte",
+    yearRead: 2019,
+    category: "non-fictional",
+    isbn: "9783446461444",
+    publisherURL: "https://www.hanser-fachbuch.de/fachbuch/artikel/9783446461444"
+  },
+  {
+    title: "Effektive Softwarearchitekturen",
+    author: "Gernot Starke",
+    yearRead: 2022,
+    category: "non-fictional",
+    isbn: "978-3-446-47672-1",
+    publisherURL: "https://www.hanser-fachbuch.de/fachbuch/artikel/9783446476721"
+  },
+  {
+    title: "No Tech Hacking",
+    author: "Johnny Long, Jack Wiles, Scott Pinzon, and Kevin D. Mitnick",
+    yearRead: 2017,
+    category: "non-fictional",
+    isbn: "9781597492157",
+    publisherURL: "https://www.oreilly.com/library/view/no-tech-hacking/9781597492157/"
+  },
+  {
+    title: "Permanent Record",
+    author: "Edward Snowden",
+    yearRead: 2021,
+    category: "non-fictional",
+    isbn: "9781250237231",
+    publisherURL: "https://us.macmillan.com/books/9781250237231/permanentrecord/"
+  },
+  {
+    title: "GitHub - Eine praktische Einführung",
+    author: "Anke Lederer",
+    yearRead: 2020,
+    category: "non-fictional",
+    isbn: "978-3-96009-141-7",
+    publisherURL: "https://dpunkt.de/produkt/github-eine-praktische-einfuehrung/"
+  },
+  {
+    title: "Einsteins Jahrhundertwerk",
+    author: "Thomas Bührke",
+    yearRead: 2017,
+    category: "non-fictional",
+    isbn: "9783423348980",
+    publisherURL: "https://www.dtv.de/buch/einsteins-jahrhundertwerk-34898"
+  },
+  {
+    title: "A Field Guide to Genetic Programming",
+    author: "Riccardo Poli, William B. Langdon, Nicholas F. McPhee",
+    yearRead: 2018,
+    category: "non-fictional",
+    publisherURL: "http://www.gp-field-guide.org.uk/"
+  },
+  {
+    title: "Machine Learning mit Python",
+    author: "Sebastian Raschka",
+    yearRead: 2019,
+    category: "non-fictional",
+    isbn: "978-3958457331",
+    publisherURL: "https://www.mitp.de/IT-WEB/KI-Data-Science/Machine-Learning-mit-Python.html"
+  },
+  {
+    title: "Clean Code",
+    author: "Robert C. Martin",
+    yearRead: 2020,
+    category: "non-fictional",
+    isbn: "9780132350884",
+    publisherURL: "https://www.pearson.com/us/higher-education/program/Martin-Clean-Code-A-Handbook-of-Agile-Software-Craftsmanship/PGM63937.html"
+  },
+  {
+    title: "Deep Learning mit Python",
+    author: "François Chollet",
+    yearRead: 2020,
+    category: "non-fictional",
+    isbn: "9781617294433",
+    publisherURL: "https://www.manning.com/books/deep-learning-with-python"
+  },
+  {
+    title: "Hacking",
+    author: "Jon Erickson",
+    yearRead: 2017,
+    category: "non-fictional",
+    isbn: "978-1593271442",
+    publisherURL: "https://nostarch.com/hacking2.htm"
+  },
+  {
+    title: "Docker",
+    author: "Bernd Öggl and Michael Kofler",
+    yearRead: 2020,
+    category: "non-fictional",
+    isbn: "978-3836261760",
+    publisherURL: "https://www.rheinwerk-verlag.de/docker-das-praxisbuch-fuer-entwickler-und-devops-teams/"
+  },
+  {
+    title: "React",
+    author: "Sebastian Springer",
+    yearRead: 2020,
+    category: "non-fictional",
+    isbn: "978-1493224401",
+    publisherURL: "https://www.rheinwerk-verlag.de/react-das-umfassende-handbuch/"
+  },
+  {
+    title: "Skalierbare Container-Infrastrukturen",
+    author: "Oliver Liebel",
+    yearRead: 2022,
+    category: "non-fictional",
+    isbn: "978-3-8362-7772-3",
+    publisherURL: "https://www.rheinwerk-verlag.de/skalierbare-container-infrastrukturen-das-handbuch-fuer-administratoren/"
+  },
+  {
+    title: "Nähen - Das Standardwerk",
+    author: "Jutta Kühnle, Karin Roser, and Brigitte Binder",
+    yearRead: 2024,
+    category: "non-fictional",
+    isbn: "9783772448607",
+    publisherURL: "https://www.topp-kreativ.de/naehen-das-standardwerk-4860"
+  },
+  {
+    title: "Metro 2035",
+    author: "Dmitry Glukhovsky",
+    yearRead: 2018,
+    category: "fictional",
+    isbn: "9783453315556",
+    publisherURL: "https://www.goodreads.com/book/show/33113864-metro-2035"
+  },
+  {
+    title: "Die Kunst der Täuschung",
+    author: "Kevin Mitnick and William L. Simon",
+    yearRead: 2019,
+    category: "non-fictional",
+    isbn: "9783826615696",
+    publisherURL: "https://www.mitp.de/IT-WEB/IT-Sicherheit/Die-Kunst-der-Taeuschung.html"
+  },
+  {
+    title: "Fahrenheit 451",
+    author: "Ray Bradbury",
+    yearRead: 2020,
+    category: "fictional",
+    isbn: "9781451673319",
+    publisherURL: "https://www.simonandschuster.com/books/Fahrenheit-451/Ray-Bradbury/9781451673265"
+  },
+  {
+    title: "The Information",
+    author: "James Gleick",
+    yearRead: 2023,
+    category: "non-fictional",
+    isbn: "9781400096237",
+    publisherURL: "https://www.goodreads.com/book/show/8701960-the-information"
+  },
+  {
+    title: "1984",
+    author: "George Orwell",
+    yearRead: 2020,
+    category: "fictional",
+    isbn: "9780451524935",
+    publisherURL: "https://www.penguinrandomhouse.com/books/326569/1984-by-george-orwell-with-a-foreword-by-thomas-pynchon/"
+  },
+  {
+    title: "Schöne neue Welt",
+    author: "Aldous Huxley",
+    yearRead: 2020,
+    category: "fictional",
+    isbn: "978-3596905737",
+    publisherURL: "https://www.fischerverlage.de/buch/aldous-huxley-schoene-neue-welt-9783596905737"
+  },
+  {
+    title: "Americanah",
+    author: "Chimamanda Ngozi Adichie",
+    yearRead: 2025,
+    category: "fictional",
+    isbn: "9780307455925",
+    publisherURL: "https://www.penguinrandomhouse.com/books/878/americanah-by-chimamanda-ngozi-adichie/"
+  },
+  {
+    title: "Rechte Gefühle: Affekte und Strategien des digitalen Faschismus",
+    author: "Simon Strick",
+    yearRead: 2024,
+    category: "non-fictional",
+    isbn: "978-3-8376-5495-0",
+    publisherURL: "https://www.transcript-verlag.de/978-3-8376-5495-0/rechte-gefuehle/"
   }
 ];
 
