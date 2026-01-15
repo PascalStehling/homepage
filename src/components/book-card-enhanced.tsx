@@ -59,33 +59,16 @@ export function BookCardEnhanced({ book }: BookCardProps) {
         </div>
 
         {/* Links */}
-        {(book.publisherURL || book.gutenbergURL) && (
+        {book.gutenbergURL && (
           <div className="flex flex-wrap gap-2 pt-2 border-t border-border/50">
-            {book.publisherURL && (
-              <a
-                href={book.publisherURL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center text-xs font-medium text-primary hover:underline"
-              >
-                {book.publisherURL.includes("gutenberg") ||
-                book.publisherURL.includes("archive") ||
-                book.publisherURL.includes("projekt")
-                  ? "Read"
-                  : "Publisher"}{" "}
-                <LuArrowUpRight className="ml-1 h-2 w-2" />
-              </a>
-            )}
-            {book.gutenbergURL && (
-              <a
-                href={book.gutenbergURL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center text-xs font-medium text-primary hover:underline"
-              >
-                Read <LuArrowUpRight className="ml-1 h-2 w-2" />
-              </a>
-            )}
+            <a
+              href={book.gutenbergURL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center text-xs font-medium text-primary hover:underline"
+            >
+              Read <LuArrowUpRight className="ml-1 h-2 w-2" />
+            </a>
           </div>
         )}
       </div>
