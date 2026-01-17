@@ -127,60 +127,62 @@ export function SkillsTimeline() {
         </p>
       </div>
 
-      {/* Timeline Header with Years */}
-      <div className="space-y-6">
-        <div className="relative h-12">
-          {/* Year markers */}
-          <div className="absolute inset-x-0 top-0 flex justify-between text-xs font-medium text-muted-foreground">
-            {Array.from({ length: totalYears + 1 }, (_, i) => startYear + i).map((year) => (
-              <span key={year} className="absolute" style={{ left: `${getPosition(year)}%` }}>
-                {year}
-              </span>
-            ))}
+      {/* Timeline Header with Years - Horizontal Scroll Container */}
+      <div className="overflow-x-auto -mx-4 px-4 md:mx-0 md:px-0">
+        <div className="min-w-[768px] space-y-6">
+          <div className="relative h-12 sticky top-0 bg-background z-10">
+            {/* Year markers */}
+            <div className="absolute inset-x-0 top-0 flex justify-between text-xs font-medium text-muted-foreground">
+              {Array.from({ length: totalYears + 1 }, (_, i) => startYear + i).map((year) => (
+                <span key={year} className="absolute" style={{ left: `${getPosition(year)}%` }}>
+                  {year}
+                </span>
+              ))}
+            </div>
+            {/* Timeline line */}
+            <div className="absolute inset-x-0 bottom-4 h-0.5 bg-border"></div>
           </div>
-          {/* Timeline line */}
-          <div className="absolute inset-x-0 bottom-4 h-0.5 bg-border"></div>
-        </div>
 
-        {/* Timeline Sections */}
-        <div className="space-y-6 pb-6 border-b border-border">
-          <TimelineSection
-            title="Education"
-            items={milestones.filter((m) => m.type === "education")}
-            barColor="bg-blue-500"
-            icon={LuGraduationCap}
-            getTitle={(m) => m.title}
-            getSubtitle={(m) => m.description}
-          />
+          {/* Timeline Sections */}
+          <div className="space-y-6 pb-6 border-b border-border">
+            <TimelineSection
+              title="Education"
+              items={milestones.filter((m) => m.type === "education")}
+              barColor="bg-blue-500"
+              icon={LuGraduationCap}
+              getTitle={(m) => m.title}
+              getSubtitle={(m) => m.description}
+            />
 
-          <TimelineSection
-            title="Work Experience"
-            items={milestones.filter((m) => m.type === "work")}
-            barColor="bg-emerald-500"
-            icon={LuBriefcase}
-            getTitle={(m) => m.title}
-            getSubtitle={(m) => m.description}
-          />
+            <TimelineSection
+              title="Work Experience"
+              items={milestones.filter((m) => m.type === "work")}
+              barColor="bg-emerald-500"
+              icon={LuBriefcase}
+              getTitle={(m) => m.title}
+              getSubtitle={(m) => m.description}
+            />
 
+            <TimelineSection
+              title="Personal Interests"
+              items={nonTechnicalInterests}
+              barColor="bg-rose-500"
+              icon={LuHeartHandshake}
+              getTitle={(m) => m.name}
+              getSubtitle={(m) => m.description}
+            />
+          </div>
+
+          {/* Technical Skills */}
           <TimelineSection
-            title="Personal Interests"
-            items={nonTechnicalInterests}
-            barColor="bg-rose-500"
+            title="Technical Skills"
+            items={allSkills}
+            getBarColor={(skill) => proficiencyColors[skill.proficiency as keyof typeof proficiencyColors]}
             icon={LuHeartHandshake}
-            getTitle={(m) => m.name}
-            getSubtitle={(m) => m.description}
+            getTitle={(s) => s.name}
+            getSubtitle={(s) => proficiencyLabels[s.proficiency as keyof typeof proficiencyLabels]}
           />
         </div>
-
-        {/* Technical Skills */}
-        <TimelineSection
-          title="Technical Skills"
-          items={allSkills}
-          getBarColor={(skill) => proficiencyColors[skill.proficiency as keyof typeof proficiencyColors]}
-          icon={LuHeartHandshake}
-          getTitle={(s) => s.name}
-          getSubtitle={(s) => proficiencyLabels[s.proficiency as keyof typeof proficiencyLabels]}
-        />
       </div>
 
       {/* Legend */}
