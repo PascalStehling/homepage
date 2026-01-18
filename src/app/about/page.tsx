@@ -27,7 +27,7 @@ export default function About() {
         <div className="text-center space-y-4">
           <div className="relative w-[204px] h-[212px] rotate-6 rounded-xl overflow-hidden shadow-lg transition-transform hover:rotate-0">
             <Image
-              src="/penguin-with-keyboard.jpg"
+              src="/penguin-with-keyboard.png"
               alt="Happy Pepe with Keyboard"
               fill
               className="object-cover"
