@@ -1,4 +1,4 @@
-import { publications } from "@/app/publications/data";
+import { publications } from "@/app/[locale]/publications/data";
 import { formatDate } from "@/lib/utils";
 import Link from "next/link";
 import { LuArrowLeft, LuArrowUpRight } from "react-icons/lu";
@@ -10,8 +10,8 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function PublicationPost({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+export default async function PublicationPost({ params }: { params: Promise<{ slug: string; locale: string }> }) {
+  const { slug, locale } = await params;
   const post = publications.find((p) => p.slug === slug);
 
   if (!post) {

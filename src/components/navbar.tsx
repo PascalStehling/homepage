@@ -1,27 +1,37 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useLocale, useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import { LuMenu, LuMoon, LuSun, LuX } from "react-icons/lu";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { socialItems } from "@/lib/personal-data";
 
-const navItems = [
-  { name: "Home", path: "/" },
-  { name: "About", path: "/about" },
-  { name: "CV", path: "/cv" },
-  { name: "Personal Timeline", path: "/skills" },
-  { name: "Publications", path: "/publications" },
-  { name: "Bookshelf", path: "/books" },
-];
-
 export function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
+  const locale = useLocale();
+  const t = useTranslations("navbar");
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const navItems = [
+    { nameKey: "home", path: "/" },
+    { nameKey: "about", path: "/about" },
+    { nameKey: "cv", path: "/cv" },
+    { nameKey: "skills", path: "/skills" },
+    { nameKey: "publications", path: "/publications" },
+    { nameKey: "books", path: "/books" },
+  ];
+
+  const switchLanguage = (newLocale: string) => {
+    const segments = pathname.split("/");
+    segments[1] = newLocale;
+    router.push(segments.join("/"));
+  };
 
   useEffect(() => {
     setMounted(true);
@@ -42,17 +52,37 @@ export function Navbar() {
                 href={item.path}
                 className={cn(
                   "text-sm font-medium transition-colors hover:text-foreground",
-                  pathname === item.path
+                  pathname.includes(item.path) && item.path !== "/"
+                    ? "text-foreground"
+                    : pathname === "/" && item.path === "/"
                     ? "text-foreground"
                     : "text-muted-foreground"
                 )}
               >
-                {item.name}
+                {t(item.nameKey)}
               </Link>
             ))}
           </div>
 
           <div className="hidden md:flex items-center gap-2 border-l border-border pl-6 ml-2">
+            {/* Language Switcher */}
+            <div className="flex items-center gap-2">
+              {["en", "de"].map((lang) => (
+                <button
+                  key={lang}
+                  onClick={() => switchLanguage(lang)}
+                  className={cn(
+                    "px-2 py-1 rounded text-xs font-medium transition-colors",
+                    locale === lang
+                      ? "bg-primary text-primary-foreground"
+                      : "text-muted-foreground hover:text-foreground hover:bg-accent"
+                  )}
+                >
+                  {lang.toUpperCase()}
+                </button>
+              ))}
+            </div>
+
             {socialItems.map((item) => (
               <Link
                 key={item.name}
@@ -104,30 +134,55 @@ export function Navbar() {
                 href={item.path}
                 className={cn(
                   "text-sm font-medium transition-colors hover:text-foreground py-2",
-                  pathname === item.path
+                  pathname.includes(item.path) && item.path !== "/"
+                    ? "text-foreground"
+                    : pathname === "/" && item.path === "/"
                     ? "text-foreground"
                     : "text-muted-foreground"
                 )}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                {item.name}
+                {t(item.nameKey)}
               </Link>
             ))}
-            
-            <div className="flex gap-4 mt-2 pt-4 border-t border-border">
-              {socialItems.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.path}
-                  target={item.target}
-                  rel={item.rel}
-                  className="flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <item.icon className="h-5 w-5" />
-                  {item.name}
-                </Link>
-              ))}
+
+            <div className="flex flex-col gap-4 mt-2 pt-4 border-t border-border">
+              {/* Language Switcher Mobile */}
+              <div className="flex gap-2">
+                {["en", "de"].map((lang) => (
+                  <button
+                    key={lang}
+                    onClick={() => {
+                      switchLanguage(lang);
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className={cn(
+                      "px-3 py-1 rounded text-sm font-medium transition-colors",
+                      locale === lang
+                        ? "bg-primary text-primary-foreground"
+                        : "text-muted-foreground hover:text-foreground hover:bg-accent"
+                    )}
+                  >
+                    {lang.toUpperCase()}
+                  </button>
+                ))}
+              </div>
+
+              <div className="flex gap-4">
+                {socialItems.map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.path}
+                    target={item.target}
+                    rel={item.rel}
+                    className="flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <item.icon className="h-5 w-5" />
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
         </div>

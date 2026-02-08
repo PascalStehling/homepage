@@ -1,10 +1,14 @@
+"use client"
+
+import { useTranslations } from "next-intl";
 import { workExperience, educationHistory, interests, mainSkills, previousExperience } from "@/lib/personal-data";
 
-function TimelineItem({ item, last }: { item: any; last?: boolean }) {
+function TimelineItem({ item, last, translatedDescription }: { item: any; last?: boolean; translatedDescription?: string }) {
   const isWork = "company" in item;
   const title = isWork ? item.jobTitle : item.degree;
   const organization = isWork ? item.company : item.school;
   const timeRange = `${item.startYear}-${item.endYear || "present"}`;
+  const description = translatedDescription || item.description;
 
   return (
     <div className="relative pl-8 pb-12 last:pb-0 group">
@@ -28,7 +32,7 @@ function TimelineItem({ item, last }: { item: any; last?: boolean }) {
         </div>
 
         <p className="text-muted-foreground leading-relaxed">
-          {item.description}
+          {description}
         </p>
       </div>
     </div>
@@ -36,31 +40,66 @@ function TimelineItem({ item, last }: { item: any; last?: boolean }) {
 }
 
 export default function CV() {
+  const t = useTranslations();
+
+  // Map company names to translation keys
+  const workDescriptionMap: { [key: string]: string } = {
+    "Catenion": "catenion",
+    "Sopra Steria": "sopraSteri",
+    "Helmholtz-Zentrum Berlin (HZB)": "helmholtz",
+  };
+
+  // Map school names to translation keys
+  const educationDescriptionMap: { [key: string]: string } = {
+    "Hochschule Wismar": "wismar",
+    "Berliner Hochschule für Technik (BHT)": "bht",
+    "Hochschule für Wirtschaft und Recht (HWR)": "hwr",
+    "Johann-Gottfried-Seume-Gymnasium Vacha": "abitur",
+  };
+
   return (
     <div className="max-w-3xl mx-auto space-y-16">
       <section className="animate-fade-in-up">
-        <h2 className="text-2xl font-bold tracking-tight mb-8">Work Experience</h2>
+        <h2 className="text-2xl font-bold tracking-tight mb-8">{t("cv.workExperience")}</h2>
         <div className="space-y-0">
-          {workExperience.map((work, i) => (
-            <TimelineItem key={i} item={work} last={i === workExperience.length - 1} />
-          ))}
+          {workExperience.map((work, i) => {
+            const translationKey = workDescriptionMap[work.company];
+            const translatedDesc = translationKey ? t(`workExperience.${translationKey}`) : undefined;
+            return (
+              <TimelineItem
+                key={i}
+                item={work}
+                last={i === workExperience.length - 1}
+                translatedDescription={translatedDesc}
+              />
+            );
+          })}
         </div>
       </section>
 
       <section className="animate-fade-in-up delay-200">
-        <h2 className="text-2xl font-bold tracking-tight mb-8">Education</h2>
+        <h2 className="text-2xl font-bold tracking-tight mb-8">{t("cv.education")}</h2>
         <div className="space-y-0">
-          {educationHistory.map((edu, i) => (
-            <TimelineItem key={i} item={edu} last={i === educationHistory.length - 1} />
-          ))}
+          {educationHistory.map((edu, i) => {
+            const translationKey = educationDescriptionMap[edu.school];
+            const translatedDesc = translationKey ? t(`education.${translationKey}`) : undefined;
+            return (
+              <TimelineItem
+                key={i}
+                item={edu}
+                last={i === educationHistory.length - 1}
+                translatedDescription={translatedDesc}
+              />
+            );
+          })}
         </div>
       </section>
 
       <section className="animate-fade-in-up delay-500">
-        <h2 className="text-2xl font-bold tracking-tight mb-8">Skills</h2>
+        <h2 className="text-2xl font-bold tracking-tight mb-8">{t("cv.skills")}</h2>
         <div className="space-y-6">
           <div className="space-y-3">
-            <h3 className="font-semibold text-lg">Main Skills</h3>
+            <h3 className="font-semibold text-lg">{t("cvSkills.mainSkills")}</h3>
             <div className="flex flex-wrap gap-2">
               {mainSkills.map((skill) => (
                 <span
@@ -73,9 +112,9 @@ export default function CV() {
               ))}
             </div>
           </div>
-          
+
           <div className="space-y-3">
-            <h3 className="font-semibold text-lg text-muted-foreground">Previous Experience</h3>
+            <h3 className="font-semibold text-lg text-muted-foreground">{t("skillCategories.previousExperience")}</h3>
             <div className="flex flex-wrap gap-2">
               {previousExperience.map((skill) => (
                 <span
@@ -90,7 +129,7 @@ export default function CV() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="font-semibold text-lg">Interests</h3>
+            <h3 className="font-semibold text-lg">{t("cv.interests")}</h3>
             <div className="flex flex-wrap gap-2">
               {interests.map((interest) => (
                 <span

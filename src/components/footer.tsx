@@ -1,7 +1,12 @@
+"use client";
+
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { socialItems } from "@/lib/personal-data";
 
 export function Footer() {
+  const t = useTranslations("footer");
+
   return (
     <footer className="border-t border-border py-8 mt-12">
       <div className="container mx-auto px-4 flex flex-col items-center gap-4">
@@ -20,11 +25,9 @@ export function Footer() {
           ))}
         </div>
         <div className="text-center text-sm text-muted-foreground">
-          <p>
-            &copy; {new Date().getFullYear()} Pascal Stehling. All rights reserved.
-          </p>
+          <p>{t("copyright")}</p>
           <p className="mt-2">
-            Built with Next.js & Tailwind CSS.
+            {t("madeWith")} Next.js & Tailwind CSS.
           </p>
         </div>
       </div>

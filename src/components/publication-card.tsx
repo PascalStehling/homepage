@@ -1,7 +1,10 @@
+"use client";
+
 import Link from "next/link";
+import { useLocale } from "next-intl";
 import { formatDate } from "@/lib/utils";
 import { LuArrowUpRight } from "react-icons/lu";
-import { Publication } from "@/app/publications/data";
+import { Publication } from "@/app/[locale]/publications/data";
 
 interface PublicationCardProps {
   slug: string;
@@ -9,6 +12,8 @@ interface PublicationCardProps {
 }
 
 export function PublicationCard({ slug, metadata }: PublicationCardProps) {
+  const locale = useLocale();
+
   return (
     <div className="group relative flex flex-col space-y-3 rounded-lg border border-border p-6 transition-all duration-300 hover:bg-accent hover:-translate-y-1 hover:shadow-lg">
       <div className="flex items-center justify-between">
@@ -21,9 +26,9 @@ export function PublicationCard({ slug, metadata }: PublicationCardProps) {
           </span>
         )}
       </div>
-      
+
       <h3 className="text-xl font-semibold tracking-tight text-foreground group-hover:text-foreground">
-        <Link href={`/publications/${slug}`} className="focus:outline-none">
+        <Link href={`/${locale}/publications/${slug}`} className="focus:outline-none">
           <span className="absolute inset-0" aria-hidden="true" />
           {metadata.title}
         </Link>

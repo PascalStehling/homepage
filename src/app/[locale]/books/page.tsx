@@ -1,3 +1,5 @@
+"use client"
+
 import { BooksTimeline } from "@/components/books-timeline";
 
 export default function Books() {

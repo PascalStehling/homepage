@@ -1,3 +1,6 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import { books, Book } from "@/lib/personal-data";
 import { BookCardEnhanced } from "./book-card-enhanced";
 
@@ -51,10 +54,10 @@ interface TimelineLegendProps {
   items: Array<{ color: string; label: string }>;
 }
 
-function TimelineLegend({ items }: TimelineLegendProps) {
+function TimelineLegend({ items, legendLabel }: TimelineLegendProps & { legendLabel: string }) {
   return (
     <div className="pt-8 border-t border-border space-y-4">
-      <h2 className="text-lg font-semibold">Legend</h2>
+      <h2 className="text-lg font-semibold">{legendLabel}</h2>
       <div className="flex gap-6">
         {items.map((item) => (
           <div key={item.label} className="flex items-center gap-2">
@@ -121,6 +124,8 @@ function Timeline({ years, booksByYear }: TimelineProps) {
 }
 
 export function BooksTimeline() {
+  const t = useTranslations("books");
+
   // Sort books by year read
   const sortedBooks = [...books].sort((a, b) => a.yearRead - b.yearRead);
 
@@ -131,18 +136,23 @@ export function BooksTimeline() {
     .map(Number)
     .sort((a, b) => b - a);
 
+  const legend = [
+    { color: "bg-rose-500", label: t("fictional") },
+    { color: "bg-blue-500", label: t("nonFictional") },
+  ];
+
   return (
     <div className="space-y-8">
       <div className="space-y-2">
-        <h1 className="text-4xl font-bold tracking-tight">Reading Timeline</h1>
+        <h1 className="text-4xl font-bold tracking-tight">{t("title")}</h1>
         <p className="text-lg text-muted-foreground">
-          Books I've read organized chronologically
+          {t("description")}
         </p>
       </div>
 
       <Timeline years={years} booksByYear={booksByYear} />
 
-      <TimelineLegend items={legendItems} />
+      <TimelineLegend items={legend} legendLabel={t("legend")} />
     </div>
   );
 }
