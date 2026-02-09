@@ -12,8 +12,10 @@ import { socialItems } from "@/lib/personal-data";
 export function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
-  const locale = useLocale();
+  const currentLocale = useLocale();
   const t = useTranslations("navbar");
+  // Extract locale directly from pathname to ensure highlighting updates immediately
+  const locale = pathname.split("/")[1] || currentLocale;
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
