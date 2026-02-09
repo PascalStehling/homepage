@@ -727,6 +727,14 @@ const booksInput: BookInput[] = [
     category: "non-fictional",
     isbn: "978-3-8376-5495-0",
     publisherURL: "https://www.transcript-verlag.de/978-3-8376-5495-0/rechte-gefuehle/"
+  },
+  {
+    title: { en: "Billionaires Don't Pay Income Tax and We're Going to End That", de: "Reichensteuer: Aber richtig!" },
+    author: "Gabriel Zucman",
+    yearRead: 2026,
+    category: "non-fictional",
+    isbn: "9783518001387",
+    publisherURL: "https://www.suhrkamp.de/buch/gabriel-zucman-reichensteuer-t-9783518001387"
   }
 ];
 
