@@ -1,0 +1,101 @@
+import type { MessageStructure } from './types';
+
+export const enMessages: MessageStructure = {
+  navbar: {
+    home: "Home",
+    about: "About",
+    cv: "CV",
+    skills: "Skills",
+    publications: "Publications",
+    books: "Books",
+  },
+  common: {
+    viewCV: "View CV",
+    moreAboutMe: "More About Me",
+  },
+  home: {
+    title: "My little corner of the web",
+    bio: "Hi, I'm Pascal Stehling, a Data Engineer and Data Architect living in Potsdam, a \"suburb of Berlin\", Germany.",
+    description:
+      "I build mainly data pipelines, design data architectures, and occasionally tinker with web development. I love to learn new stuff and challenge myself :)",
+    recentPublications: "Recent Publications",
+    viewAll: "View all",
+  },
+  about: {
+    title: "About Me",
+  },
+  cv: {
+    title: "Curriculum Vitae",
+    workExperience: "Work Experience",
+    education: "Education",
+    skills: "Skills",
+    interests: "Interests",
+    timeline: "Timeline",
+  },
+  skills: {
+    title: "Skills & Expertise",
+    description: "My technical journey and areas of focus",
+  },
+  publications: {
+    title: "Publications",
+    description: "My research and publications",
+  },
+  books: {
+    title: "My Book Collection",
+    description: "Books I've read and want to remember",
+    fictional: "Fictional",
+    nonFictional: "Non-Fictional",
+    yearRead: "Read in",
+    legend: "Legend",
+  },
+  skillCategories: {
+    dataStack: "Data Stack",
+    dataStackDesc: "Core data engineering tools and frameworks",
+    frontendWeb: "Frontend & Web",
+    frontendWebDesc: "Web development and UI technologies",
+    infrastructureTools: "Infrastructure & Tools",
+    infrastructureToolsDesc: "DevOps, version control, and cloud",
+    securityResearch: "Security & Research",
+    securityResearchDesc: "Cryptography and security interests",
+    areasOfInterest: "Areas of Interest",
+    areasOfInterestDesc: "Currently exploring and learning",
+    previousExperience: "Previous Experience",
+    previousExperienceDesc: "Languages and tools from earlier projects",
+  },
+  cvSkills: {
+    mainSkills: "Main Skills",
+  },
+  workExperience: {
+    catenion:
+      "Began as a Data Science working student in 2020 and transitioned to a full-time role after completing my Master's in Data Science. My focus evolved from Data Science to Data Engineering, and ultimately to Data Architecture. In addition to designing and improving data pipelines and architecture, I developed data-driven web applications and managed the entire IT infrastructure for the Data Unit. For the past year, I have been leading a small data team, including two working students.",
+    sopraSteri:
+      "As a working student, I conducted research in AI and Data Science. This role provided me with foundational experience in the field and prepared me for more project-oriented work in subsequent positions.",
+    helmholtz:
+      "Completed a Computer Science Apprenticeship through a dual study program, where I applied academic knowledge to practical projects at a major research institution.",
+  },
+  education: {
+    wismar:
+      "Driven by a passion for continuous learning, I pursued a second Master's degree in Cyber Security. This program allowed me to rediscover my interest in algebra, leading to a Master's thesis on Homomorphic Encryption with Module-Learning with Errors (M-LWE). I graduated with an overall grade of 1.3.",
+    bht: "This practical Master's program provided extensive knowledge of various AI models and their underlying infrastructure. A course on virtualization and containers proved particularly influential, and I now use these techniques, especially Dev Containers, daily. I graduated with an overall grade of 1.3 and distinction.",
+    hwr: "This dual study program combined theoretical computer science with practical application at HZB.",
+    abitur: "German High School degree",
+  },
+  nonTechnicalInterests: {
+    cooking: "Classic menswear tailoring",
+    swingDancing: "Lindy Hop and Charleston",
+    sewing: "Classic menswear tailoring",
+    sailing: "Made my Sailing License on Wansee, Berlin",
+    mushroomHunting: "Searching and Identifying Mushrooms in the forest",
+  },
+  proficiency: {
+    advanced: "Advanced",
+    proficient: "Proficient",
+    experienced: "Experienced",
+    learning: "Learning",
+  },
+  footer: {
+    copyright: "© 2026 Pascal Stehling. All rights reserved.",
+    madeWith: "Made with",
+  },
+};
+
