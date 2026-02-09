@@ -70,11 +70,6 @@ function TimelineLegend({ items, legendLabel }: TimelineLegendProps & { legendLa
   );
 }
 
-const legendItems = [
-  { color: "bg-rose-500", label: "Fictional" },
-  { color: "bg-blue-500", label: "Non-Fictional" },
-];
-
 function groupBooksByYear(books: Book[]) {
   return books.reduce(
     (acc, book) => {

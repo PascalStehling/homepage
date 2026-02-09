@@ -11,7 +11,7 @@ export async function generateStaticParams() {
 }
 
 export default async function PublicationPost({ params }: { params: Promise<{ slug: string; locale: string }> }) {
-  const { slug, locale } = await params;
+  const { slug } = await params;
   const post = publications.find((p) => p.slug === slug);
 
   if (!post) {

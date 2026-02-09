@@ -21,7 +21,7 @@ export default function Home() {
         <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-linear-to-r from-foreground to-stone-600 dark:to-stone-400">
           {t("home.title")}
         </h1>
-        <div className="max-w-[600px] text-foreground md:text-xl space-y-4">
+        <div className="max-w-2xl text-foreground md:text-xl space-y-4">
           <p>{t("home.bio")}</p>
           <p className="text-muted-foreground">{t("home.description")}</p>
         </div>

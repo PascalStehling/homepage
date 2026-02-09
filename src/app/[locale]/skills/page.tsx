@@ -24,7 +24,7 @@ const proficiencyColors = {
 };
 
 interface TimelineBarProps {
-  item: any;
+  item: { startYear: number; endYear?: number };
   title: string;
   subtitle?: string;
   color: string;
@@ -61,10 +61,10 @@ function TimelineBar({ item, title, subtitle, color, icon: Icon }: TimelineBarPr
           style={{ left: `${barLeft}%`, top: "100%", marginTop: "4px" }}
         >
           <div className="font-semibold">{title}</div>
-          <div className="text-[10px] opacity-80">
+          <div className="text-xs opacity-80">
             {item.startYear} - {item.endYear || "present"}
           </div>
-          {subtitle && <div className="text-[10px] opacity-80 mt-1">{subtitle}</div>}
+          {subtitle && <div className="text-xs opacity-80 mt-1">{subtitle}</div>}
         </div>
       )}
     </div>
@@ -96,7 +96,7 @@ export default function SkillsPage() {
 
       {/* Gantt Chart - Horizontal Scroll */}
       <div className="overflow-x-auto">
-        <div className="min-w-[800px] relative">
+        <div className="min-w-200 relative">
           {/* Year Headers */}
           <div className="sticky top-0 bg-background z-20 pb-4 border-b-2 border-border">
             <div className="relative h-8">

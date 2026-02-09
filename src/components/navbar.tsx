@@ -6,7 +6,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import { LuMenu, LuMoon, LuSun, LuX } from "react-icons/lu";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { socialItems } from "@/lib/personal-data";
 
 export function Navbar() {
@@ -17,6 +17,7 @@ export function Navbar() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [, startTransition] = useTransition();
 
   const navItems = [
     { nameKey: "home", path: "/" },
@@ -34,7 +35,9 @@ export function Navbar() {
   };
 
   useEffect(() => {
-    setMounted(true);
+    startTransition(() => {
+      setMounted(true);
+    });
   }, []);
 
   return (

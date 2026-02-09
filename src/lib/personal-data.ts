@@ -46,7 +46,7 @@ export const socialItems = [
    ============================================================================ */
 export interface Skill {
   name: string;
-  icon: React.ComponentType<any>;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   proficiency: "advanced" | "proficient" | "experienced" | "learning";
   startYear: number;
   endYear?: number;

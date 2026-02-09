@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useLocale } from "next-intl";
-import { formatDate } from "@/lib/utils";
 import { LuArrowUpRight } from "react-icons/lu";
 import { Publication } from "@/app/[locale]/publications/data";
 

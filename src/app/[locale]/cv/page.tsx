@@ -2,9 +2,9 @@
 
 import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
-import { workExperience, educationHistory, interests, mainSkills, previousExperience } from "@/lib/personal-data";
+import { workExperience, educationHistory, interests, mainSkills, previousExperience, WorkExperience, Education } from "@/lib/personal-data";
 
-function TimelineItem({ item, locale, last }: { item: any; locale: string; last?: boolean }) {
+function TimelineItem({ item, locale, last }: { item: WorkExperience | Education; locale: string; last?: boolean }) {
   const isWork = "company" in item;
   const title = isWork ? item.jobTitle : item.degree;
   const organization = isWork ? item.company : item.school;
@@ -14,7 +14,7 @@ function TimelineItem({ item, locale, last }: { item: any; locale: string; last?
   return (
     <div className="relative pl-8 pb-12 last:pb-0 group">
       {!last && (
-        <div className="absolute left-[11px] top-6 bottom-0 w-px bg-border group-hover:bg-neutral-400 dark:group-hover:bg-neutral-600 transition-colors duration-300" />
+        <div className="absolute left-2.75 top-6 bottom-0 w-px bg-border group-hover:bg-neutral-400 dark:group-hover:bg-neutral-600 transition-colors duration-300" />
       )}
       <div className="absolute left-0 top-1.5 h-6 w-6 rounded-full border-4 border-background bg-border group-hover:bg-neutral-800 dark:group-hover:bg-neutral-200 group-hover:scale-110 transition-all duration-300 z-10" />
 
