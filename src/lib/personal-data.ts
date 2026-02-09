@@ -342,7 +342,7 @@ export const milestones: Milestone[] = [
    BOOKS - Single source of truth
    ============================================================================ */
 export interface BookInput {
-  title: string;
+  title: LocaleString;
   author: string;
   yearRead: number;
   category: "fictional" | "non-fictional";
@@ -355,8 +355,9 @@ export interface Book extends BookInput {
   slug: string;
 }
 
-function generateSlug(title: string, author: string): string {
-  const combined = `${title}-${author}`
+function generateSlug(title: LocaleString | string, author: string): string {
+  const titleStr = typeof title === 'string' ? title : title.en;
+  const combined = `${titleStr}-${author}`
     .toLowerCase()
     .replace(/[^\w\s-]/g, "")
     .replace(/\s+/g, "-")
@@ -368,7 +369,7 @@ function generateSlug(title: string, author: string): string {
 const booksInput: BookInput[] = [
   // Image 1
   {
-    title: "Hands-On Graph Analytics with Neo4j",
+    title: { en: "Hands-On Graph Analytics with Neo4j", de: "Hands-On Graph Analytics with Neo4j" },
     author: "Estelle Scifo",
     yearRead: 2021,
     category: "non-fictional",
@@ -376,35 +377,35 @@ const booksInput: BookInput[] = [
     publisherURL: "https://www.packtpub.com/en-us/product/hands-on-graph-analytics-with-neo4j-9781839212611"
   },
   {
-    title: "Quantentheorie in 30 Sekunden",
+    title: { en: "Quantentheorie in 30 Sekunden", de: "Quantentheorie in 30 Sekunden" },
     author: "Brian Clegg",
     yearRead: 2015,
     category: "non-fictional",
     isbn: "9789089984906"
   },
   {
-    title: "Deutschland. Ein Wintermärchen",
+    title: { en: "Deutschland. Ein Wintermärchen", de: "Deutschland. Ein Wintermärchen" },
     author: "Heinrich Heine",
     yearRead: 2023,
     category: "fictional",
     gutenbergURL: "https://www.gutenberg.org/ebooks/6079"
   },
   {
-    title: "Dr Jekyll & Mr. Hyde",
+    title: { en: "Dr Jekyll & Mr. Hyde", de: "Der seltsame Fall des Dr. Jekyll und Mr. Hyde" },
     author: "Robert Louis Stevenson",
     yearRead: 2023,
     category: "fictional",
     gutenbergURL: "https://www.gutenberg.org/ebooks/43"
   },
   {
-    title: "Bekenntnisse eines englischen Opiumessers",
+    title: { en: "Confessions of an English Opium-Eater", de: "Bekenntnisse eines englischen Opiumessers" },
     author: "Thomas De Quincey",
     yearRead: 2024,
     category: "fictional",
     gutenbergURL: "https://www.projekt-gutenberg.org/quincey/opiumess/opiumess.html"
   },
   {
-    title: "Designing Data-Intensive Applications",
+    title: { en: "Designing Data-Intensive Applications", de: "Designing Data-Intensive Applications" },
     author: "Martin Kleppmann",
     yearRead: 2023,
     category: "non-fictional",
@@ -412,14 +413,14 @@ const booksInput: BookInput[] = [
     publisherURL: "https://www.oreilly.com/library/view/designing-data-intensive-applications/9781491903063/"
   },
   {
-    title: "Vorkurs Informatik: Der Einstieg ins Informatikstudium",
+    title: { en: "Vorkurs Informatik: Der Einstieg ins Informatikstudium", de: "Vorkurs Informatik: Der Einstieg ins Informatikstudium" },
     author: "Heinrich Müller and Frank Weichert",
     yearRead: 2016,
     category: "non-fictional",
     publisherURL: "https://link.springer.com/book/10.1007/978-3-658-36468-7"
   },
   {
-    title: "Die Buddenbrooks",
+    title: { en: "Buddenbrooks: The Decline of a Family", de: "Die Buddenbrooks: Verfall einer Familie" },
     author: "Thomas Mann",
     yearRead: 2025,
     category: "fictional",
@@ -427,7 +428,7 @@ const booksInput: BookInput[] = [
     gutenbergURL: "https://archive.org/details/buddenbrooksverf34811gut"
   },
   {
-    title: "Der Zauberberg",
+    title: { en: "The Magic Mountain", de: "Der Zauberberg" },
     author: "Thomas Mann",
     yearRead: 2025,
     category: "fictional",
@@ -435,14 +436,14 @@ const booksInput: BookInput[] = [
     gutenbergURL: "https://www.gutenberg.org/ebooks/65661"
   },
   {
-    title: "Die Physik der unsichtbaren Dimensionen",
+    title: { en: "Hyperspace: A Scientific Odyssey Through Parallel Universes, Time Warps, and the Tenth Dimension", de: "Die Physik der unsichtbaren Dimensionen" },
     author: "Michio Kaku",
     yearRead: 2016,
     category: "non-fictional",
     publisherURL: "https://www.rowohlt.de/buch/michio-kaku-die-physik-der-unsichtbaren-dimensionen-9783499615092"
   },
   {
-    title: "Data Matching: Concepts and Techniques for Record Linkage, Entity Resolution, and Duplicate Detection",
+    title: { en: "Data Matching: Concepts and Techniques for Record Linkage, Entity Resolution, and Duplicate Detection", de: "Data Matching: Concepts and Techniques for Record Linkage, Entity Resolution, and Duplicate Detection" },
     author: "Peter Christen",
     yearRead: 2021,
     category: "non-fictional",
@@ -450,28 +451,28 @@ const booksInput: BookInput[] = [
     publisherURL: "https://link.springer.com/book/10.1007/978-3-642-31164-2"
   },
   {
-    title: "Atomgewicht 500",
+    title: { en: "Atomgewicht 500", de: "Atomgewicht 500" },
     author: "Hans Dominik",
     yearRead: 2021,
     category: "fictional",
     gutenbergURL: "https://www.projekt-gutenberg.org/dominik/atom500/atom500.html"
   },
   {
-    title: "Die Harzreise",
+    title: { en: "Die Harzreise", de: "Die Harzreise" },
     author: "Heinrich Heine",
     yearRead: 2022,
     category: "fictional",
     gutenbergURL: "https://www.gutenberg.org/ebooks/24249"
   },
   {
-    title: "IT-Sicherheit: Konzepte - Verfahren - Protokolle",
+    title: { en: "IT-Sicherheit: Konzepte - Verfahren - Protokolle", de: "IT-Sicherheit: Konzepte - Verfahren - Protokolle" },
     author: "Claudia Eckert",
     yearRead: 2022,
     category: "non-fictional",
     publisherURL: "https://link.springer.com/book/10.1007/978-3-658-26084-9"
   },
   {
-    title: "Knowledge Graphs: Fundamentals, Techniques, and Applications",
+    title: { en: "Knowledge Graphs: Fundamentals, Techniques, and Applications", de: "Knowledge Graphs: Fundamentals, Techniques, and Applications" },
     author: "Mayank Kejriwal, Craig A. Knoblock, Pedro Szekely",
     yearRead: 2021,
     category: "non-fictional",
@@ -479,7 +480,7 @@ const booksInput: BookInput[] = [
     publisherURL: "https://mitpress.mit.edu/9780262045094/knowledge-graphs/"
   },
   {
-    title: "Big Data: A Revolution That Will Transform How We Live, Work, and Think",
+    title: { en: "Big Data: A Revolution That Will Transform How We Live, Work, and Think", de: "Big Data: A Revolution That Will Transform How We Live, Work, and Think" },
     author: "Viktor Mayer-Schönberger and Kenneth Cukier",
     yearRead: 2020,
     category: "non-fictional",
@@ -487,28 +488,28 @@ const booksInput: BookInput[] = [
     publisherURL: "https://www.hachettebookgroup.com/"
   },
   {
-    title: "Drogen: Die Geschichte eines langen Krieges",
+    title: { en: "Chasing the Scream: The First and Last Days of the War on Drugs", de: "Drogen: Die Geschichte eines langen Krieges" },
     author: "Johann Hari",
     yearRead: 2018,
     category: "non-fictional",
     publisherURL: "https://www.fischerverlage.de/buch/johann-hari-drogen-9783596034192"
   },
   {
-    title: "Power to the People: Wie wir mit Technologie die Demokratie neu erfinden",
+    title: { en: "Power to the People: Wie wir mit Technologie die Demokratie neu erfinden", de: "Power To The People: Wie wir mit Technologie die Demokratie neu erfinden" },
     author: "Georg Diez and Emanuel Heisenberg",
     yearRead: 2024,
     category: "non-fictional",
     publisherURL: "https://www.hanser-literaturverlage.de/buch/power-to-the-people-9783446266889-t-3194"
   },
   {
-    title: "Polizei- und Kriminalpsychologie",
+    title: { en: "Polizei- und Kriminalpsychologie", de: "Polizei- und Kriminalpsychologie" },
     author: "Birgitta Sticher",
     yearRead: 2023,
     category: "non-fictional",
     publisherURL: "https://polizeiwissenschaft.de/"
   },
   {
-    title: "Immun: A Journey into the Mysterious System That Keeps You Alive",
+    title: { en: "Immune: A Journey into the Mysterious System That Keeps You Alive", de: "Immun: Alles über das faszinierende System, das uns am Leben hält" },
     author: "Philipp Dettmer",
     yearRead: 2023,
     category: "non-fictional",
@@ -516,13 +517,13 @@ const booksInput: BookInput[] = [
     publisherURL: "https://www.philippdettmer.net/immune"
   },
   {
-    title: "Pilz in Sicht ... und dann im Topf",
+    title: { en: "Pilz in Sicht ... und dann im Topf", de: "Pilz in Sicht ... und dann im Topf" },
     author: "Renate Volk and Fridhelm Volk",
     yearRead: 2025,
     category: "non-fictional"
   },
   {
-    title: "Die Sprache der Rechten",
+    title: { en: "Die Sprache der Rechten", de: "Die Sprache der Rechten" },
     author: "Heidrun Deborah Kämper",
     yearRead: 2025,
     category: "non-fictional",
@@ -530,7 +531,7 @@ const booksInput: BookInput[] = [
     publisherURL: "https://www.reclam.de/produktdetail/die-sprache-der-rechten-wie-sie-reden-und-was-sie-sagen-9783150146637"
   },
   {
-    title: "Schnelles Denken, Langsames Denken",
+    title: { en: "Thinking, Fast and Slow", de: "Schnelles Denken, Langsames Denken" },
     author: "Daniel Kahneman",
     yearRead: 2024,
     category: "non-fictional",
@@ -538,14 +539,14 @@ const booksInput: BookInput[] = [
     publisherURL: "https://www.penguin.de/buecher/daniel-kahneman-schnelles-denken-langsames-denken/taschenbuch/9783328100348"
   },
   {
-    title: "Sein erster Fall: Teil 2 - Das Ende der Trilogie",
+    title: { en: "Sein erster Fall: Teil 2 - Das Ende der Trilogie", de: "Sein erster Fall: Teil 2 - Das Ende der Trilogie" },
     author: "Jan Philipp Zymny and Henry Frottey",
     yearRead: 2019,
     category: "fictional",
     isbn: "9783954610204"
   },
   {
-    title: "Maschinelles Lernen",
+    title: { en: "Maschinelles Lernen", de: "Maschinelles Lernen" },
     author: "Jörg Frochte",
     yearRead: 2019,
     category: "non-fictional",
@@ -553,7 +554,7 @@ const booksInput: BookInput[] = [
     publisherURL: "https://www.hanser-fachbuch.de/fachbuch/artikel/9783446461444"
   },
   {
-    title: "Effektive Softwarearchitekturen",
+    title: { en: "Effektive Softwarearchitekturen", de: "Effektive Softwarearchitekturen" },
     author: "Gernot Starke",
     yearRead: 2022,
     category: "non-fictional",
@@ -561,7 +562,7 @@ const booksInput: BookInput[] = [
     publisherURL: "https://www.hanser-fachbuch.de/fachbuch/artikel/9783446476721"
   },
   {
-    title: "No Tech Hacking",
+    title: { en: "No Tech Hacking", de: "No Tech Hacking" },
     author: "Johnny Long, Jack Wiles, Scott Pinzon, and Kevin D. Mitnick",
     yearRead: 2017,
     category: "non-fictional",
@@ -569,7 +570,7 @@ const booksInput: BookInput[] = [
     publisherURL: "https://www.oreilly.com/library/view/no-tech-hacking/9781597492157/"
   },
   {
-    title: "Permanent Record",
+    title: { en: "Permanent Record", de: "Permanent Record: Meine Geschichte" },
     author: "Edward Snowden",
     yearRead: 2021,
     category: "non-fictional",
@@ -577,7 +578,7 @@ const booksInput: BookInput[] = [
     publisherURL: "https://us.macmillan.com/books/9781250237231/permanentrecord/"
   },
   {
-    title: "GitHub - Eine praktische Einführung",
+    title: { en: "GitHub – Eine praktische Einführung", de: "GitHub – Eine praktische Einführung" },
     author: "Anke Lederer",
     yearRead: 2020,
     category: "non-fictional",
@@ -585,7 +586,7 @@ const booksInput: BookInput[] = [
     publisherURL: "https://dpunkt.de/produkt/github-eine-praktische-einfuehrung/"
   },
   {
-    title: "Einsteins Jahrhundertwerk",
+    title: { en: "Einsteins Jahrhundertwerk", de: "Einsteins Jahrhundertwerk" },
     author: "Thomas Bührke",
     yearRead: 2017,
     category: "non-fictional",
@@ -593,14 +594,14 @@ const booksInput: BookInput[] = [
     publisherURL: "https://www.dtv.de/buch/einsteins-jahrhundertwerk-34898"
   },
   {
-    title: "A Field Guide to Genetic Programming",
+    title: { en: "A Field Guide to Genetic Programming", de: "A Field Guide to Genetic Programming" },
     author: "Riccardo Poli, William B. Langdon, Nicholas F. McPhee",
     yearRead: 2018,
     category: "non-fictional",
     publisherURL: "http://www.gp-field-guide.org.uk/"
   },
   {
-    title: "Machine Learning mit Python",
+    title: { en: "Machine Learning with Python", de: "Machine Learning mit Python" },
     author: "Sebastian Raschka",
     yearRead: 2019,
     category: "non-fictional",
@@ -608,7 +609,7 @@ const booksInput: BookInput[] = [
     publisherURL: "https://www.mitp.de/IT-WEB/KI-Data-Science/Machine-Learning-mit-Python.html"
   },
   {
-    title: "Clean Code",
+    title: { en: "Clean Code", de: "Clean Code - Deutsche Ausgabe: Refactoring, Patterns, Testen und Techniken für sauberen Code" },
     author: "Robert C. Martin",
     yearRead: 2020,
     category: "non-fictional",
@@ -616,7 +617,7 @@ const booksInput: BookInput[] = [
     publisherURL: "https://www.pearson.com/us/higher-education/program/Martin-Clean-Code-A-Handbook-of-Agile-Software-Craftsmanship/PGM63937.html"
   },
   {
-    title: "Deep Learning mit Python",
+    title: { en: "Deep Learning with Python", de: "Deep Learning mit Python und Keras: Das Praxis-Handbuch vom Entwickler der Keras-Bibliothek" },
     author: "François Chollet",
     yearRead: 2020,
     category: "non-fictional",
@@ -624,7 +625,7 @@ const booksInput: BookInput[] = [
     publisherURL: "https://www.manning.com/books/deep-learning-with-python"
   },
   {
-    title: "Hacking",
+    title: { en: "Hacking: The Art of Exploitation", de: "Hacking: Die Kunst des Exploits" },
     author: "Jon Erickson",
     yearRead: 2017,
     category: "non-fictional",
@@ -632,7 +633,7 @@ const booksInput: BookInput[] = [
     publisherURL: "https://nostarch.com/hacking2.htm"
   },
   {
-    title: "Docker",
+    title: { en: "Docker", de: "Docker: Das Praxisbuch für Entwickler und DevOps-Teams" },
     author: "Bernd Öggl and Michael Kofler",
     yearRead: 2020,
     category: "non-fictional",
@@ -640,7 +641,7 @@ const booksInput: BookInput[] = [
     publisherURL: "https://www.rheinwerk-verlag.de/docker-das-praxisbuch-fuer-entwickler-und-devops-teams/"
   },
   {
-    title: "React",
+    title: { en: "React", de: "React: Das umfassende Handbuch für moderne Frontend-Entwicklung" },
     author: "Sebastian Springer",
     yearRead: 2020,
     category: "non-fictional",
@@ -648,7 +649,7 @@ const booksInput: BookInput[] = [
     publisherURL: "https://www.rheinwerk-verlag.de/react-das-umfassende-handbuch/"
   },
   {
-    title: "Skalierbare Container-Infrastrukturen",
+    title: { en: "Skalierbare Container-Infrastrukturen", de: "Skalierbare Container-Infrastrukturen" },
     author: "Oliver Liebel",
     yearRead: 2022,
     category: "non-fictional",
@@ -656,7 +657,7 @@ const booksInput: BookInput[] = [
     publisherURL: "https://www.rheinwerk-verlag.de/skalierbare-container-infrastrukturen-das-handbuch-fuer-administratoren/"
   },
   {
-    title: "Nähen - Das Standardwerk",
+    title: { en: "Nähen - Das Standardwerk", de: "Nähen - Das Standardwerk" },
     author: "Jutta Kühnle, Karin Roser, and Brigitte Binder",
     yearRead: 2024,
     category: "non-fictional",
@@ -664,7 +665,7 @@ const booksInput: BookInput[] = [
     publisherURL: "https://www.topp-kreativ.de/naehen-das-standardwerk-4860"
   },
   {
-    title: "Metro 2035",
+    title: { en: "Metro 2035", de: "Metro 2035" },
     author: "Dmitry Glukhovsky",
     yearRead: 2018,
     category: "fictional",
@@ -672,7 +673,7 @@ const booksInput: BookInput[] = [
     publisherURL: "https://www.goodreads.com/book/show/33113864-metro-2035"
   },
   {
-    title: "Die Kunst der Täuschung",
+    title: { en: "The Art of Deception", de: "Die Kunst der Täuschung: Risikofaktor Mensch" },
     author: "Kevin Mitnick and William L. Simon",
     yearRead: 2019,
     category: "non-fictional",
@@ -680,7 +681,7 @@ const booksInput: BookInput[] = [
     publisherURL: "https://www.mitp.de/IT-WEB/IT-Sicherheit/Die-Kunst-der-Taeuschung.html"
   },
   {
-    title: "Fahrenheit 451",
+    title: { en: "Fahrenheit 451", de: "Fahrenheit 451" },
     author: "Ray Bradbury",
     yearRead: 2020,
     category: "fictional",
@@ -688,7 +689,7 @@ const booksInput: BookInput[] = [
     publisherURL: "https://www.simonandschuster.com/books/Fahrenheit-451/Ray-Bradbury/9781451673265"
   },
   {
-    title: "The Information",
+    title: { en: "The Information: A History, a Theory, a Flood", de: "The Information: A History, a Theory, a Flood" },
     author: "James Gleick",
     yearRead: 2023,
     category: "non-fictional",
@@ -696,7 +697,7 @@ const booksInput: BookInput[] = [
     publisherURL: "https://www.goodreads.com/book/show/8701960-the-information"
   },
   {
-    title: "1984",
+    title: { en: "1984", de: "1984" },
     author: "George Orwell",
     yearRead: 2020,
     category: "fictional",
@@ -704,7 +705,7 @@ const booksInput: BookInput[] = [
     publisherURL: "https://www.penguinrandomhouse.com/books/326569/1984-by-george-orwell-with-a-foreword-by-thomas-pynchon/"
   },
   {
-    title: "Schöne neue Welt",
+    title: { en: "Brave New World", de: "Schöne neue Welt" },
     author: "Aldous Huxley",
     yearRead: 2020,
     category: "fictional",
@@ -712,7 +713,7 @@ const booksInput: BookInput[] = [
     publisherURL: "https://www.fischerverlage.de/buch/aldous-huxley-schoene-neue-welt-9783596905737"
   },
   {
-    title: "Americanah",
+    title: { en: "Americanah", de: "Americanah" },
     author: "Chimamanda Ngozi Adichie",
     yearRead: 2025,
     category: "fictional",
@@ -720,7 +721,7 @@ const booksInput: BookInput[] = [
     publisherURL: "https://www.penguinrandomhouse.com/books/878/americanah-by-chimamanda-ngozi-adichie/"
   },
   {
-    title: "Rechte Gefühle: Affekte und Strategien des digitalen Faschismus",
+    title: { en: "Rechte Gefühle: Affekte und Strategien des digitalen Faschismus", de: "Rechte Gefühle: Affekte und Strategien des digitalen Faschismus" },
     author: "Simon Strick",
     yearRead: 2024,
     category: "non-fictional",

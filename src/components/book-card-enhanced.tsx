@@ -7,6 +7,7 @@ import Image from "next/image";
 
 interface BookCardProps {
   book: Book;
+  locale: string;
 }
 
 const categoryBadgeColors = {
@@ -14,8 +15,11 @@ const categoryBadgeColors = {
   "non-fictional": "bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300",
 };
 
-export function BookCardEnhanced({ book }: BookCardProps) {
+export function BookCardEnhanced({ book, locale }: BookCardProps) {
   const [imageError, setImageError] = useState(false);
+
+  // Get the title in the appropriate locale
+  const title = typeof book.title === 'string' ? book.title : book.title[locale as 'en' | 'de'] || book.title.en;
 
   // Use Open Library covers - only displays real covers, no placeholders
   const coverUrl = book.isbn
@@ -29,7 +33,7 @@ export function BookCardEnhanced({ book }: BookCardProps) {
         <div className="relative w-24 h-32 shrink-0 rounded-lg overflow-hidden border border-border bg-muted">
           <Image
             src={coverUrl}
-            alt={`${book.title} cover`}
+            alt={`${title} cover`}
             fill
             className="object-cover"
             onError={() => setImageError(true)}
@@ -42,7 +46,7 @@ export function BookCardEnhanced({ book }: BookCardProps) {
       <div className="flex-1 flex flex-col justify-between min-w-0">
         <div>
           <h3 className="font-semibold text-foreground text-sm tracking-tight line-clamp-2">
-            {book.title}
+            {title}
           </h3>
           <p className="text-xs text-muted-foreground mt-1">{book.author}</p>
 

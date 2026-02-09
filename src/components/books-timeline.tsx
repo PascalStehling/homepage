@@ -1,19 +1,21 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { useParams } from "next/navigation";
 import { books, Book } from "@/lib/personal-data";
 import { BookCardEnhanced } from "./book-card-enhanced";
 
 interface BookColumnProps {
   books: Book[];
+  locale: string;
 }
 
-function BookColumn({ books: booksToShow }: BookColumnProps) {
+function BookColumn({ books: booksToShow, locale }: BookColumnProps) {
   return (
     <div className="flex flex-col gap-4">
       {booksToShow.map((book) => (
         <div key={book.slug} className="bg-card border border-border rounded-lg p-3 hover:shadow-md transition-shadow">
-          <BookCardEnhanced book={book} />
+          <BookCardEnhanced book={book} locale={locale} />
         </div>
       ))}
     </div>
@@ -24,12 +26,14 @@ interface YearSectionProps {
   year: number;
   technicalBooks: Book[];
   nonTechnicalBooks: Book[];
+  locale: string;
 }
 
 function YearSection({
   year,
   technicalBooks,
   nonTechnicalBooks,
+  locale,
 }: YearSectionProps) {
   return (
     <div className="relative">
@@ -41,10 +45,10 @@ function YearSection({
       {/* Books in two columns */}
       <div className="grid grid-cols-2 gap-8">
         {/* Left side - Fictional books */}
-        <BookColumn books={technicalBooks} />
+        <BookColumn books={technicalBooks} locale={locale} />
 
         {/* Right side - Non-fictional books */}
-        <BookColumn books={nonTechnicalBooks} />
+        <BookColumn books={nonTechnicalBooks} locale={locale} />
       </div>
     </div>
   );
@@ -87,9 +91,10 @@ function groupBooksByYear(books: Book[]) {
 interface TimelineProps {
   years: number[];
   booksByYear: Record<number, Book[]>;
+  locale: string;
 }
 
-function Timeline({ years, booksByYear }: TimelineProps) {
+function Timeline({ years, booksByYear, locale }: TimelineProps) {
   return (
     <div className="relative space-y-16">
       {/* Timeline line */}
@@ -111,6 +116,7 @@ function Timeline({ years, booksByYear }: TimelineProps) {
             year={year}
             technicalBooks={fictionalBooks}
             nonTechnicalBooks={nonFictionalBooks}
+            locale={locale}
           />
         );
       })}
@@ -120,6 +126,8 @@ function Timeline({ years, booksByYear }: TimelineProps) {
 
 export function BooksTimeline() {
   const t = useTranslations("books");
+  const params = useParams();
+  const locale = (params?.locale || "en") as string;
 
   // Sort books by year read
   const sortedBooks = [...books].sort((a, b) => a.yearRead - b.yearRead);
@@ -145,7 +153,7 @@ export function BooksTimeline() {
         </p>
       </div>
 
-      <Timeline years={years} booksByYear={booksByYear} />
+      <Timeline years={years} booksByYear={booksByYear} locale={locale} />
 
       <TimelineLegend items={legend} legendLabel={t("legend")} />
     </div>
