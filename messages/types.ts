@@ -62,24 +62,6 @@ export interface MessageStructure {
   cvSkills: {
     mainSkills: string;
   };
-  workExperience: {
-    catenion: string;
-    sopraSteri: string;
-    helmholtz: string;
-  };
-  education: {
-    wismar: string;
-    bht: string;
-    hwr: string;
-    abitur: string;
-  };
-  nonTechnicalInterests: {
-    cooking: string;
-    swingDancing: string;
-    sewing: string;
-    sailing: string;
-    mushroomHunting: string;
-  };
   proficiency: {
     advanced: string;
     proficient: string;

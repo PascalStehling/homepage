@@ -131,6 +131,14 @@ export const interests = [
 ];
 
 /* ============================================================================
+   TYPE HELPERS
+   ============================================================================ */
+export type LocaleString = {
+  en: string;
+  de: string;
+};
+
+/* ============================================================================
    WORK & EDUCATION - Single source of truth
    ============================================================================ */
 export interface WorkExperience {
@@ -139,7 +147,7 @@ export interface WorkExperience {
   location: string;
   startYear: number;
   endYear?: number;
-  description: string;
+  description: LocaleString;
 }
 
 export interface Education {
@@ -148,7 +156,7 @@ export interface Education {
   location: string;
   startYear: number;
   endYear: number;
-  description: string;
+  description: LocaleString;
 }
 
 export const workExperience: WorkExperience[] = [
@@ -157,7 +165,10 @@ export const workExperience: WorkExperience[] = [
     jobTitle: "Senior Data Architect",
     location: "Berlin, Germany",
     startYear: 2020,
-    description: "Began as a Data Science working student in 2019-2020 and transitioned to a full-time role after completing my Master's in Data Science. My focus evolved from Data Science to Data Engineering, and ultimately to Data Architecture. In addition to designing and improving data pipelines and architecture, I developed data-driven web applications and managed the entire IT infrastructure for the Data Unit. For the past year, I have been leading a small data team, including two working students.",
+    description: {
+      en: "Began as a Data Science working student in 2019-2020 and transitioned to a full-time role after completing my Master's in Data Science. My focus evolved from Data Science to Data Engineering, and ultimately to Data Architecture. In addition to designing and improving data pipelines and architecture, I developed data-driven web applications and managed the entire IT infrastructure for the Data Unit. For the past year, I have been leading a small data team, including two working students.",
+      de: "Begann 2020 als studentische Hilfskraft im Bereich Data Science und wechselte nach meinem Master in Data Science in eine Vollzeitstelle. Mein Fokus entwickelte sich von Data Science über Data Engineering zur Data Architecture. Neben der Gestaltung und Verbesserung von Datenpipelines und -architekturen entwickelte ich datengesteuerte Web-Anwendungen und verwaltete die gesamte IT-Infrastruktur der Data Unit. Im letzten Jahr leite ich ein kleines Data-Team mit zwei studentischen Hilfskräften.",
+    },
   },
   {
     company: "Sopra Steria",
@@ -165,7 +176,10 @@ export const workExperience: WorkExperience[] = [
     location: "Berlin, Germany",
     startYear: 2019,
     endYear: 2020,
-    description: "As a working student, I conducted research in AI and Data Science. This role provided me with foundational experience in the field and prepared me for more project-oriented work in subsequent positions.",
+    description: {
+      en: "As a working student, I conducted research in AI and Data Science. This role provided me with foundational experience in the field and prepared me for more project-oriented work in subsequent positions.",
+      de: "Als studentische Hilfskraft führte ich Forschungen im Bereich KI und Data Science durch. Diese Rolle vermittelte mir grundlegende Erfahrungen im Feld und bereitete mich auf projektorientiertere Arbeiten vor.",
+    },
   },
   {
     company: "Helmholtz-Zentrum Berlin (HZB)",
@@ -173,7 +187,10 @@ export const workExperience: WorkExperience[] = [
     location: "Berlin, Germany",
     startYear: 2016,
     endYear: 2019,
-    description: "Completed a Computer Science Apprenticeship through a dual study program, where I applied academic knowledge to practical projects at a major research institution.",
+    description: {
+      en: "Completed a Computer Science Apprenticeship through a dual study program, where I applied academic knowledge to practical projects at a major research institution.",
+      de: "Absolvierte ein Informatik-Praktikum im Rahmen eines dualen Studiums, in dem ich akademisches Wissen auf praktische Projekte in einer großen Forschungseinrichtung anwendete.",
+    },
   },
 ];
 
@@ -184,7 +201,10 @@ export const educationHistory: Education[] = [
     location: "Wismar/Hamburg/Berlin, Germany",
     startYear: 2022,
     endYear: 2024,
-    description: "Driven by a passion for continuous learning, I pursued a second Master's degree in Cyber Security. This program allowed me to rediscover my interest in algebra, leading to a Master's thesis on Homomorphic Encryption with Module-Learning with Errors (M-LWE). I graduated with an overall grade of 1.3.",
+    description: {
+      en: "Driven by a passion for continuous learning, I pursued a second Master's degree in Cyber Security. This program allowed me to rediscover my interest in algebra, leading to a Master's thesis on Homomorphic Encryption with Module-Learning with Errors (M-LWE). I graduated with an overall grade of 1.3.",
+      de: "Getrieben von der Leidenschaft für kontinuierliches Lernen verfolgte ich einen zweiten Master in Cybersecurity. Dieses Programm ermöglichte es mir, mein Interesse an Algebra wiederzuentdecken, was zu einer Masterarbeit über homomorphe Verschlüsselung mit Module-Learning with Errors (M-LWE) führte. Ich graduierte mit einer Gesamtnote von 1,3.",
+    },
   },
   {
     school: "Berliner Hochschule für Technik (BHT)",
@@ -192,7 +212,10 @@ export const educationHistory: Education[] = [
     location: "Berlin, Germany",
     startYear: 2019,
     endYear: 2021,
-    description: "This practical Master's program provided extensive knowledge of various AI models and their underlying infrastructure. A course on virtualization and containers proved particularly influential, and I now use these techniques, especially Dev Containers, daily. I graduated with an overall grade of 1.3 and distinction.",
+    description: {
+      en: "This practical Master's program provided extensive knowledge of various AI models and their underlying infrastructure. A course on virtualization and containers proved particularly influential, and I now use these techniques, especially Dev Containers, daily. I graduated with an overall grade of 1.3 and distinction.",
+      de: "Dieses praxisorientierte Masterprogramm vermittelte umfassende Kenntnisse verschiedener KI-Modelle und ihrer zugrunde liegenden Infrastruktur. Ein Kurs zu Virtualisierung und Containern erwies sich als besonders einflussreich, und ich nutze diese Techniken, besonders Dev Containers, täglich. Ich graduierte mit Auszeichnung und einer Gesamtnote von 1,3.",
+    },
   },
   {
     school: "Hochschule für Wirtschaft und Recht (HWR)",
@@ -200,7 +223,10 @@ export const educationHistory: Education[] = [
     location: "Berlin, Germany",
     startYear: 2016,
     endYear: 2019,
-    description: "This dual study program combined theoretical computer science with practical application at HZB.",
+    description: {
+      en: "This dual study program combined theoretical computer science with practical application at HZB.",
+      de: "Dieses duale Studium kombinierte theoretische Informatik mit praktischer Anwendung am HZB.",
+    },
   },
   {
     school: "Johann-Gottfried-Seume-Gymnasium Vacha",
@@ -208,7 +234,10 @@ export const educationHistory: Education[] = [
     location: "Vacha, Germany",
     startYear: 2008,
     endYear: 2016,
-    description: "My German High School degree",
+    description: {
+      en: "My German High School degree",
+      de: "Deutsches Abitur",
+    },
   },
 ];
 
@@ -227,36 +256,66 @@ export interface Milestone {
    NON-TECHNICAL INTERESTS & HOBBIES
    ============================================================================ */
 export interface NonTechnicalInterest {
-  name: string;
-  description: string;
+  name: LocaleString;
+  description: LocaleString;
   startYear: number;
   endYear?: number;
 }
 
 export const nonTechnicalInterests: NonTechnicalInterest[] = [
   {
-    name: "Cooking",
-    description: "Classic menswear tailoring",
+    name: {
+      en: "Cooking",
+      de: "Kochen",
+    },
+    description: {
+      en: "Cooking daily something different for relaxation and a nice dinner",
+      de: "Tägliches Kochen zur entspannung und einen leckeres Essen",
+    },
     startYear: 2016,
   },
   {
-    name: "Swing Dancing",
-    description: "Lindy Hop and Charleston",
+    name: {
+      en: "Swing Dancing",
+      de: "Swing Tanzen",
+    },
+    description: {
+      en: "Lindy Hop and Charleston",
+      de: "Lindy Hop und Charleston",
+    },
     startYear: 2024,
   },
   {
-    name: "Sewing",
-    description: "Classic menswear tailoring",
+    name: {
+      en: "Sewing",
+      de: "Nähen",
+    },
+    description: {
+      en: "General tailoring: Creating something new, but most often just fixing",
+      de: "Generelles Nähen: Dinge von 0 auf nähen, meistens aber nur beschädigte Stücke reparieren",
+    },
     startYear: 2024,
   },
   {
-    name: "Sailing",
-    description: "Made my Sailing License on Wansee, Berlin",
+    name: {
+      en: "Sailing",
+      de: "Segeln",
+    },
+    description: {
+      en: "Made my Sailing License on Wansee, Berlin. But only small sport boats yet",
+      de: "Hab meine Segellizenz auf dem Wansee gemacht. Bisher aber nur kleine Sportboote",
+    },
     startYear: 2025,
   },
   {
-    name: "Mushroom Hunting",
-    description: "Searching and Identifying Mushrooms in the forest",
+    name: {
+      en: "Mushroom Hunting",
+      de: "Pilze Sammeln",
+    },
+    description: {
+      en: "Searching and Identifying Mushrooms in the forest",
+      de: "Pilze im Wald suchen und bestimmen",
+    },
     startYear: 2025,
   },
 ];

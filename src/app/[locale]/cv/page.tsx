@@ -1,14 +1,15 @@
 "use client"
 
 import { useTranslations } from "next-intl";
+import { useParams } from "next/navigation";
 import { workExperience, educationHistory, interests, mainSkills, previousExperience } from "@/lib/personal-data";
 
-function TimelineItem({ item, last, translatedDescription }: { item: any; last?: boolean; translatedDescription?: string }) {
+function TimelineItem({ item, locale, last }: { item: any; locale: string; last?: boolean }) {
   const isWork = "company" in item;
   const title = isWork ? item.jobTitle : item.degree;
   const organization = isWork ? item.company : item.school;
   const timeRange = `${item.startYear}-${item.endYear || "present"}`;
-  const description = translatedDescription || item.description;
+  const description = item.description[locale as 'en' | 'de'] || item.description.en;
 
   return (
     <div className="relative pl-8 pb-12 last:pb-0 group">
@@ -41,57 +42,36 @@ function TimelineItem({ item, last, translatedDescription }: { item: any; last?:
 
 export default function CV() {
   const t = useTranslations();
-
-  // Map company names to translation keys
-  const workDescriptionMap: { [key: string]: string } = {
-    "Catenion": "catenion",
-    "Sopra Steria": "sopraSteri",
-    "Helmholtz-Zentrum Berlin (HZB)": "helmholtz",
-  };
-
-  // Map school names to translation keys
-  const educationDescriptionMap: { [key: string]: string } = {
-    "Hochschule Wismar": "wismar",
-    "Berliner Hochschule für Technik (BHT)": "bht",
-    "Hochschule für Wirtschaft und Recht (HWR)": "hwr",
-    "Johann-Gottfried-Seume-Gymnasium Vacha": "abitur",
-  };
+  const params = useParams();
+  const locale = (params?.locale || "en") as 'en' | 'de';
 
   return (
     <div className="max-w-3xl mx-auto space-y-16">
       <section className="animate-fade-in-up">
         <h2 className="text-2xl font-bold tracking-tight mb-8">{t("cv.workExperience")}</h2>
         <div className="space-y-0">
-          {workExperience.map((work, i) => {
-            const translationKey = workDescriptionMap[work.company];
-            const translatedDesc = translationKey ? t(`workExperience.${translationKey}`) : undefined;
-            return (
-              <TimelineItem
-                key={i}
-                item={work}
-                last={i === workExperience.length - 1}
-                translatedDescription={translatedDesc}
-              />
-            );
-          })}
+          {workExperience.map((work, i) => (
+            <TimelineItem
+              key={i}
+              item={work}
+              locale={locale}
+              last={i === workExperience.length - 1}
+            />
+          ))}
         </div>
       </section>
 
       <section className="animate-fade-in-up delay-200">
         <h2 className="text-2xl font-bold tracking-tight mb-8">{t("cv.education")}</h2>
         <div className="space-y-0">
-          {educationHistory.map((edu, i) => {
-            const translationKey = educationDescriptionMap[edu.school];
-            const translatedDesc = translationKey ? t(`education.${translationKey}`) : undefined;
-            return (
-              <TimelineItem
-                key={i}
-                item={edu}
-                last={i === educationHistory.length - 1}
-                translatedDescription={translatedDesc}
-              />
-            );
-          })}
+          {educationHistory.map((edu, i) => (
+            <TimelineItem
+              key={i}
+              item={edu}
+              locale={locale}
+              last={i === educationHistory.length - 1}
+            />
+          ))}
         </div>
       </section>
 

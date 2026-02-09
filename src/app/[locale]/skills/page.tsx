@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { useParams } from "next/navigation";
 import { skillCategories, milestones, nonTechnicalInterests } from "@/lib/personal-data";
 import { LuGraduationCap, LuBriefcase, LuHeartHandshake } from "react-icons/lu";
 import { useState } from "react";
@@ -72,6 +73,9 @@ function TimelineBar({ item, title, subtitle, color, icon: Icon }: TimelineBarPr
 
 export default function SkillsPage() {
   const t = useTranslations();
+  const params = useParams();
+  const locale = (params?.locale || "en") as 'en' | 'de';
+
   const allSkills = skillCategories
     .flatMap((cat) => cat.skills)
     .sort((a, b) => a.startYear - b.startYear);
@@ -167,10 +171,10 @@ export default function SkillsPage() {
               <div className="space-y-1">
                 {nonTechnicalInterests.map((item) => (
                   <TimelineBar
-                    key={`interest-${item.startYear}-${item.name}`}
+                    key={`interest-${item.startYear}-${item.name.en}`}
                     item={item}
-                    title={item.name}
-                    subtitle={item.description}
+                    title={item.name[locale] || item.name.en}
+                    subtitle={item.description[locale] || item.description.en}
                     color="bg-rose-500"
                     icon={LuHeartHandshake}
                   />

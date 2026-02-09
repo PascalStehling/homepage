@@ -65,28 +65,6 @@ export const deMessages: MessageStructure = {
   cvSkills: {
     mainSkills: "Hauptfähigkeiten",
   },
-  workExperience: {
-    catenion:
-      "Begann 2020 als studentische Hilfskraft im Bereich Data Science und wechselte nach meinem Master in Data Science in eine Vollzeitstelle. Mein Fokus entwickelte sich von Data Science über Data Engineering zur Data Architecture. Neben der Gestaltung und Verbesserung von Datenpipelines und -architekturen entwickelte ich datengesteuerte Web-Anwendungen und verwaltete die gesamte IT-Infrastruktur der Data Unit. Im letzten Jahr leite ich ein kleines Data-Team mit zwei studentischen Hilfskräften.",
-    sopraSteri:
-      "Als studentische Hilfskraft führte ich Forschungen im Bereich KI und Data Science durch. Diese Rolle vermittelte mir grundlegende Erfahrungen im Feld und bereitete mich auf projektorientiertere Arbeiten vor.",
-    helmholtz:
-      "Absolvierte ein Informatik-Praktikum im Rahmen eines dualen Studiums, in dem ich akademisches Wissen auf praktische Projekte in einer großen Forschungseinrichtung anwendete.",
-  },
-  education: {
-    wismar:
-      "Getrieben von der Leidenschaft für kontinuierliches Lernen verfolgte ich einen zweiten Master in Cybersecurity. Dieses Programm ermöglichte es mir, mein Interesse an Algebra wiederzuentdecken, was zu einer Masterarbeit über homomorphe Verschlüsselung mit Module-Learning with Errors (M-LWE) führte. Ich graduierte mit einer Gesamtnote von 1,3.",
-    bht: "Dieses praxisorientierte Masterprogramm vermittelte umfassende Kenntnisse verschiedener KI-Modelle und ihrer zugrunde liegenden Infrastruktur. Ein Kurs zu Virtualisierung und Containern erwies sich als besonders einflussreich, und ich nutze diese Techniken, besonders Dev Containers, täglich. Ich graduierte mit Auszeichnung und einer Gesamtnote von 1,3.",
-    hwr: "Dieses duale Studium kombinierte theoretische Informatik mit praktischer Anwendung am HZB.",
-    abitur: "Deutsches Abitur",
-  },
-  nonTechnicalInterests: {
-    cooking: "Klassische Herrenschneiderei",
-    swingDancing: "Lindy Hop und Charleston",
-    sewing: "Klassische Herrenschneiderei",
-    sailing: "Segelbrevat auf dem Wansee, Berlin",
-    mushroomHunting: "Pilze im Wald suchen und bestimmen",
-  },
   proficiency: {
     advanced: "Fortgeschritten",
     proficient: "Kompetent",
