@@ -6,6 +6,7 @@ export interface MessageStructure {
     skills: string;
     publications: string;
     books: string;
+    now: string;
   };
   common: {
     viewCV: string;
@@ -67,6 +68,15 @@ export interface MessageStructure {
     proficient: string;
     experienced: string;
     learning: string;
+  };
+  now: {
+    title: string;
+    subtitle: string;
+    atWork: string;
+    reading: string;
+    learning: string;
+    doing: string;
+    lastUpdated: string;
   };
   footer: {
     copyright: string;

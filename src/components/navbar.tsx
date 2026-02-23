@@ -28,6 +28,7 @@ export function Navbar() {
     { nameKey: "skills", path: "/skills" },
     { nameKey: "publications", path: "/publications" },
     { nameKey: "books", path: "/books" },
+    { nameKey: "now", path: "/now" },
   ];
 
   const switchLanguage = (newLocale: string) => {

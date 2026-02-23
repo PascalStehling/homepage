@@ -21,10 +21,9 @@ export function BookCardEnhanced({ book, locale }: BookCardProps) {
   // Get the title in the appropriate locale
   const title = typeof book.title === 'string' ? book.title : book.title[locale as 'en' | 'de'] || book.title.en;
 
-  // Use Open Library covers - only displays real covers, no placeholders
-  const coverUrl = book.isbn
-    ? `https://covers.openlibrary.org/b/isbn/${book.isbn}-M.jpg?default=false`
-    : null;
+  // Use explicit coverUrl override, then fall back to Open Library via ISBN
+  const coverUrl = book.coverUrl
+    ?? (book.isbn ? `https://covers.openlibrary.org/b/isbn/${book.isbn}-M.jpg?default=false` : null);
 
   return (
     <div className="flex gap-4 h-full">

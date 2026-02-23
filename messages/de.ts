@@ -8,6 +8,7 @@ export const deMessages: MessageStructure = {
     skills: "Fähigkeiten",
     publications: "Veröffentlichungen",
     books: "Bücherregal",
+    now: "Jetzt",
   },
   common: {
     viewCV: "Lebenslauf anzeigen",
@@ -70,6 +71,15 @@ export const deMessages: MessageStructure = {
     proficient: "Kompetent",
     experienced: "Erfahren",
     learning: "Lernend",
+  },
+  now: {
+    title: "Jetzt",
+    subtitle: "Was ich gerade so mache",
+    atWork: "Bei der Arbeit",
+    reading: "Aktuell lese ich",
+    learning: "Aktuell lerne ich",
+    doing: "Aktuell mache ich",
+    lastUpdated: "Zuletzt aktualisiert",
   },
   footer: {
     copyright: "© 2026 Pascal Stehling. Alle Rechte vorbehalten.",

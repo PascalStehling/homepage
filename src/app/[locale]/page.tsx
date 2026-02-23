@@ -17,7 +17,18 @@ export default function Home() {
 
   return (
     <div className="space-y-16">
-      <section className="space-y-6 animate-fade-in-up">
+      <section className="space-y-6 animate-fade-in-up h-card">
+        {/* Machine-readable identity metadata (IndieWeb h-card) */}
+        <span className="sr-only">
+          <span className="p-name">Pascal Stehling</span>
+          <a className="u-url u-uid" href="https://stehl.ing">https://stehl.ing</a>
+          <a className="u-email" href="mailto:web@stehl.ing">web@stehl.ing</a>
+          <a className="u-url" rel="me" href="https://github.com/PascalStehling">GitHub</a>
+          <data className="u-photo" value="/me-in-potsdam.jpeg" />
+          <span className="p-locality">Potsdam</span>
+          <span className="p-country-name">Germany</span>
+          <span className="p-job-title">Senior Data Architect</span>
+        </span>
         <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none bg-clip-text text-transparent bg-linear-to-r from-foreground to-stone-600 dark:to-stone-400">
           {t("home.title")}
         </h1>

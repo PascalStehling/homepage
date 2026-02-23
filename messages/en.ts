@@ -8,6 +8,7 @@ export const enMessages: MessageStructure = {
     skills: "Skills",
     publications: "Publications",
     books: "Books",
+    now: "Now",
   },
   common: {
     viewCV: "View CV",
@@ -70,6 +71,15 @@ export const enMessages: MessageStructure = {
     proficient: "Proficient",
     experienced: "Experienced",
     learning: "Learning",
+  },
+  now: {
+    title: "Now",
+    subtitle: "What I'm currently up to",
+    atWork: "At Work",
+    reading: "Currently Reading",
+    learning: "Currently Learning",
+    doing: "Currently Doing",
+    lastUpdated: "Last updated",
   },
   footer: {
     copyright: "© 2026 Pascal Stehling. All rights reserved.",

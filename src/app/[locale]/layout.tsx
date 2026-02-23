@@ -40,6 +40,22 @@ export const metadata: Metadata = {
   },
 };
 
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Pascal Stehling",
+  url: "https://stehl.ing",
+  email: "web@stehl.ing",
+  jobTitle: "Senior Data Architect",
+  image: "https://stehl.ing/me-in-potsdam.jpeg",
+  sameAs: ["https://github.com/PascalStehling"],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Potsdam",
+    addressCountry: "DE",
+  },
+};
+
 export default async function LocaleLayout({
   children,
   params,
@@ -56,7 +72,12 @@ export default async function LocaleLayout({
   const messages = await getMessages({ locale });
 
   return (
-    <NextIntlClientProvider messages={messages}>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+      />
+      <NextIntlClientProvider messages={messages}>
       <ThemeProvider
         attribute="class"
         defaultTheme="system"
@@ -73,5 +94,6 @@ export default async function LocaleLayout({
         <Analytics />
       </ThemeProvider>
     </NextIntlClientProvider>
+    </>
   );
 }

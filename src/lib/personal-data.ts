@@ -32,12 +32,13 @@ export const socialItems = [
     path: "https://github.com/PascalStehling",
     icon: LuGithub,
     target: "_blank",
-    rel: "noopener noreferrer",
+    rel: "noopener noreferrer me",
   },
   {
     name: "Email",
     path: "mailto:web@stehl.ing",
     icon: LuMail,
+    rel: "me",
   },
 ];
 
@@ -50,6 +51,7 @@ export interface Skill {
   proficiency: "advanced" | "proficient" | "experienced" | "learning";
   startYear: number;
   endYear?: number;
+  now?: boolean;
 }
 
 export interface SkillCategory {
@@ -98,7 +100,7 @@ export const skillCategories: SkillCategory[] = [
     description: "Currently exploring and learning",
     skills: [
       { name: "Data Engineering", icon: LuDatabase, proficiency: "advanced", startYear: 2022 },
-      { name: "Agentic Programming", icon: LuBot, proficiency: "learning", startYear: 2025 },
+      { name: "Agentic Programming", icon: LuBot, proficiency: "learning", startYear: 2025, now: true },
       { name: "Rust", icon: SiRust, proficiency: "learning", startYear: 2025 },
     ],
   },
@@ -260,6 +262,7 @@ export interface NonTechnicalInterest {
   description: LocaleString;
   startYear: number;
   endYear?: number;
+  now?: boolean;
 }
 
 export const nonTechnicalInterests: NonTechnicalInterest[] = [
@@ -273,6 +276,7 @@ export const nonTechnicalInterests: NonTechnicalInterest[] = [
       de: "Tägliches Kochen zur entspannung und einen leckeres Essen",
     },
     startYear: 2016,
+    now: true
   },
   {
     name: {
@@ -318,6 +322,30 @@ export const nonTechnicalInterests: NonTechnicalInterest[] = [
     },
     startYear: 2025,
   },
+  {
+    name: {
+      en: "Political Economy",
+      de: "Politische Ökonomie",
+    },
+    description: {
+      en: "Trying to understand how capitalism works and how it shapes society — not to abolish it, but to make it work better for everyone through reform",
+      de: "Versuche zu verstehen, wie der Kapitalismus funktioniert und wie er die Gesellschaft prägt — nicht um ihn abzuschaffen, sondern um ihn durch Reformen für alle besser zu machen",
+    },
+    startYear: 2025,
+    now: true,
+  },
+  {
+    name: {
+      en: "SPD Local Politics",
+      de: "SPD Lokalpolitik",
+    },
+    description: {
+      en: "Member of the SPD, serving as Kassenwart (treasurer) at the local branch level",
+      de: "Mitglied der SPD, tätig als Kassenwart im lokalen Ortsverein",
+    },
+    startYear: 2025,
+    now: true,
+  },
 ];
 
 // Derive milestones from work and education data
@@ -347,8 +375,10 @@ export interface BookInput {
   yearRead: number;
   category: "fictional" | "non-fictional";
   isbn?: string;
+  coverUrl?: string;
   publisherURL?: string;
   gutenbergURL?: string;
+  now?: boolean;
 }
 
 export interface Book extends BookInput {
@@ -367,7 +397,15 @@ function generateSlug(title: LocaleString | string, author: string): string {
 }
 
 const booksInput: BookInput[] = [
-  // Image 1
+  {
+    title: { en: "Capitalism: A Global History", de: "Kapitalismus: Geschichte einer Weltrevolution" },
+    author: "Sven Beckert",
+    yearRead: 2026,
+    category: "non-fictional",
+    isbn: "9783498005917",
+    coverUrl: "https://books.google.com/books/content?id=wsFTEQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+    now: true,
+  },
   {
     title: { en: "Hands-On Graph Analytics with Neo4j", de: "Hands-On Graph Analytics with Neo4j" },
     author: "Estelle Scifo",
@@ -734,6 +772,7 @@ const booksInput: BookInput[] = [
     yearRead: 2026,
     category: "non-fictional",
     isbn: "9783518001387",
+    coverUrl: "https://books.google.com/books/content?id=maeUEQAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
     publisherURL: "https://www.suhrkamp.de/buch/gabriel-zucman-reichensteuer-t-9783518001387"
   }
 ];
