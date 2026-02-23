@@ -1,20 +1,7 @@
-"use client";
-
-import { useTranslations } from "next-intl";
-import { useParams } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 import { skillCategories, milestones, nonTechnicalInterests } from "@/lib/personal-data";
-import { LuGraduationCap, LuBriefcase, LuHeartHandshake } from "react-icons/lu";
-import { useState } from "react";
-
-const START_YEAR = 2014;
-const END_YEAR = 2026;
-const TOTAL_YEARS = END_YEAR - START_YEAR;
-
-const getPosition = (year: number) => ((year - START_YEAR) / TOTAL_YEARS) * 100;
-const getWidth = (start: number, end?: number) => {
-  const finalEnd = end || END_YEAR;
-  return Math.max(((finalEnd - start) / TOTAL_YEARS) * 100, 3);
-};
+import { TimelineBar } from "@/components/timeline-bar";
+import { START_YEAR, END_YEAR, TOTAL_YEARS, getPosition } from "@/lib/timeline-utils";
 
 const proficiencyColors = {
   advanced: "bg-emerald-500",
@@ -23,58 +10,13 @@ const proficiencyColors = {
   learning: "bg-purple-500",
 };
 
-interface TimelineBarProps {
-  item: { startYear: number; endYear?: number };
-  title: string;
-  subtitle?: string;
-  color: string;
-  icon: React.ComponentType<{ className?: string }>;
-}
-
-function TimelineBar({ item, title, subtitle, color, icon: Icon }: TimelineBarProps) {
-  const [showTooltip, setShowTooltip] = useState(false);
-  const displayStartYear = Math.max(item.startYear, START_YEAR);
-  const barWidth = getWidth(displayStartYear, item.endYear);
-  const barLeft = getPosition(displayStartYear);
-  const showLabel = barWidth > 8;
-
-  return (
-    <div className="relative h-8 group">
-      <div
-        className={`absolute h-6 rounded ${color} opacity-90 hover:opacity-100 cursor-pointer transition-all hover:h-7 flex items-center px-2 gap-1`}
-        style={{ left: `${barLeft}%`, width: `${barWidth}%` }}
-        onClick={() => setShowTooltip(!showTooltip)}
-        onMouseEnter={() => setShowTooltip(true)}
-        onMouseLeave={() => setShowTooltip(false)}
-      >
-        {showLabel && (
-          <>
-            <Icon className="h-3 w-3 text-white shrink-0" />
-            <span className="text-xs text-white font-medium truncate">{title}</span>
-          </>
-        )}
-      </div>
-
-      {showTooltip && (
-        <div
-          className="absolute z-50 px-3 py-2 bg-foreground text-background rounded shadow-lg text-xs whitespace-nowrap"
-          style={{ left: `${barLeft}%`, top: "100%", marginTop: "4px" }}
-        >
-          <div className="font-semibold">{title}</div>
-          <div className="text-xs opacity-80">
-            {item.startYear} - {item.endYear || "present"}
-          </div>
-          {subtitle && <div className="text-xs opacity-80 mt-1">{subtitle}</div>}
-        </div>
-      )}
-    </div>
-  );
-}
-
-export default function SkillsPage() {
-  const t = useTranslations();
-  const params = useParams();
-  const locale = (params?.locale || "en") as 'en' | 'de';
+export default async function SkillsPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale });
 
   const allSkills = skillCategories
     .flatMap((cat) => cat.skills)
@@ -86,15 +28,11 @@ export default function SkillsPage() {
 
   return (
     <div className="max-w-6xl mx-auto space-y-8">
-      {/* Header */}
       <div className="space-y-2">
         <h1 className="text-4xl font-bold tracking-tight">{t("skills.title")}</h1>
-        <p className="text-lg text-muted-foreground">
-          {t("skills.description")}
-        </p>
+        <p className="text-lg text-muted-foreground">{t("skills.description")}</p>
       </div>
 
-      {/* Gantt Chart - Horizontal Scroll */}
       <div className="overflow-x-auto">
         <div className="min-w-200 relative">
           {/* Year Headers */}
@@ -134,11 +72,11 @@ export default function SkillsPage() {
                 {education.map((item) => (
                   <TimelineBar
                     key={`edu-${item.startYear}-${item.title}`}
-                    item={item}
+                    item={{ startYear: item.startYear, endYear: item.endYear }}
                     title={item.title}
                     subtitle={item.description}
                     color="bg-blue-500"
-                    icon={LuGraduationCap}
+                    iconType="education"
                   />
                 ))}
               </div>
@@ -153,11 +91,11 @@ export default function SkillsPage() {
                 {work.map((item) => (
                   <TimelineBar
                     key={`work-${item.startYear}-${item.title}`}
-                    item={item}
+                    item={{ startYear: item.startYear, endYear: item.endYear }}
                     title={item.title}
                     subtitle={item.description}
                     color="bg-emerald-500"
-                    icon={LuBriefcase}
+                    iconType="work"
                   />
                 ))}
               </div>
@@ -172,11 +110,11 @@ export default function SkillsPage() {
                 {nonTechnicalInterests.map((item) => (
                   <TimelineBar
                     key={`interest-${item.startYear}-${item.name.en}`}
-                    item={item}
-                    title={item.name[locale] || item.name.en}
-                    subtitle={item.description[locale] || item.description.en}
+                    item={{ startYear: item.startYear, endYear: item.endYear }}
+                    title={item.name[locale as "en" | "de"] || item.name.en}
+                    subtitle={item.description[locale as "en" | "de"] || item.description.en}
                     color="bg-rose-500"
-                    icon={LuHeartHandshake}
+                    iconType="interest"
                   />
                 ))}
               </div>
@@ -191,11 +129,11 @@ export default function SkillsPage() {
                 {allSkills.map((skill) => (
                   <TimelineBar
                     key={`skill-${skill.startYear}-${skill.name}`}
-                    item={skill}
+                    item={{ startYear: skill.startYear, endYear: skill.endYear }}
                     title={skill.name}
                     subtitle={skill.proficiency}
                     color={proficiencyColors[skill.proficiency as keyof typeof proficiencyColors]}
-                    icon={LuHeartHandshake}
+                    iconType="interest"
                   />
                 ))}
               </div>

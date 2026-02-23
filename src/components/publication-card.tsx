@@ -1,18 +1,14 @@
-"use client";
-
 import Link from "next/link";
-import { useLocale } from "next-intl";
 import { LuArrowUpRight } from "react-icons/lu";
 import { Publication } from "@/app/[locale]/publications/data";
 
 interface PublicationCardProps {
   slug: string;
   metadata: Publication;
+  locale: string;
 }
 
-export function PublicationCard({ slug, metadata }: PublicationCardProps) {
-  const locale = useLocale();
-
+export function PublicationCard({ slug, metadata, locale }: PublicationCardProps) {
   return (
     <div className="group relative flex flex-col space-y-3 rounded-lg border border-border p-6 transition-all duration-300 hover:bg-accent hover:-translate-y-1 hover:shadow-lg">
       <div className="flex items-center justify-between">
@@ -32,7 +28,7 @@ export function PublicationCard({ slug, metadata }: PublicationCardProps) {
           {metadata.title}
         </Link>
       </h3>
-      
+
       <p className="text-muted-foreground line-clamp-3">
         {metadata.description}
       </p>

@@ -1,16 +1,18 @@
-"use client"
-
 import Link from "next/link";
-import { useLocale, useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { publications } from "@/app/[locale]/publications/data";
 import { PublicationCard } from "@/components/publication-card";
 import { SkillsTeaser } from "@/components/skills-teaser";
 import { LuArrowRight } from "react-icons/lu";
 import { socialItems } from "@/lib/personal-data";
 
-export default function Home() {
-  const locale = useLocale();
-  const t = useTranslations();
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale });
   const recentPublications = publications
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 3);
@@ -85,7 +87,7 @@ export default function Home() {
         </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {recentPublications.map((pub) => (
-            <PublicationCard key={pub.slug} slug={pub.slug} metadata={pub} />
+            <PublicationCard key={pub.slug} slug={pub.slug} metadata={pub} locale={locale} />
           ))}
         </div>
       </section>

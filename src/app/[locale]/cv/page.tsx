@@ -1,15 +1,28 @@
-"use client"
+import { getTranslations } from "next-intl/server";
+import {
+  workExperience,
+  educationHistory,
+  interests,
+  mainSkills,
+  previousExperience,
+  WorkExperience,
+  Education,
+} from "@/lib/personal-data";
 
-import { useTranslations } from "next-intl";
-import { useParams } from "next/navigation";
-import { workExperience, educationHistory, interests, mainSkills, previousExperience, WorkExperience, Education } from "@/lib/personal-data";
-
-function TimelineItem({ item, locale, last }: { item: WorkExperience | Education; locale: string; last?: boolean }) {
+function TimelineItem({
+  item,
+  locale,
+  last,
+}: {
+  item: WorkExperience | Education;
+  locale: string;
+  last?: boolean;
+}) {
   const isWork = "company" in item;
   const title = isWork ? item.jobTitle : item.degree;
   const organization = isWork ? item.company : item.school;
   const timeRange = `${item.startYear}-${item.endYear || "present"}`;
-  const description = item.description[locale as 'en' | 'de'] || item.description.en;
+  const description = item.description[locale as "en" | "de"] || item.description.en;
 
   return (
     <div className="relative pl-8 pb-12 last:pb-0 group">
@@ -20,9 +33,7 @@ function TimelineItem({ item, locale, last }: { item: WorkExperience | Education
 
       <div className="space-y-2 transition-transform duration-300 group-hover:translate-x-1">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-          <h3 className="font-semibold text-lg text-foreground">
-            {title}
-          </h3>
+          <h3 className="font-semibold text-lg text-foreground">{title}</h3>
           <span className="text-sm font-mono text-muted-foreground whitespace-nowrap">
             {timeRange}
           </span>
@@ -32,18 +43,19 @@ function TimelineItem({ item, locale, last }: { item: WorkExperience | Education
           {organization} • {item.location}
         </div>
 
-        <p className="text-muted-foreground leading-relaxed">
-          {description}
-        </p>
+        <p className="text-muted-foreground leading-relaxed">{description}</p>
       </div>
     </div>
   );
 }
 
-export default function CV() {
-  const t = useTranslations();
-  const params = useParams();
-  const locale = (params?.locale || "en") as 'en' | 'de';
+export default async function CV({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale });
 
   return (
     <div className="max-w-3xl mx-auto space-y-16">
