@@ -46,7 +46,7 @@ export function Navbar() {
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-sm">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-        <Link href="/" className="font-bold text-xl tracking-tight">
+        <Link href={`/${locale}`} className="font-bold text-xl tracking-tight">
           Pascal Stehling
         </Link>
 
@@ -55,12 +55,12 @@ export function Navbar() {
             {navItems.map((item) => (
               <Link
                 key={item.path}
-                href={item.path}
+                href={`/${locale}${item.path}`}
                 className={cn(
                   "text-sm font-medium transition-colors hover:text-foreground",
                   pathname.includes(item.path) && item.path !== "/"
                     ? "text-foreground"
-                    : pathname === "/" && item.path === "/"
+                    : pathname === `/${locale}` && item.path === "/"
                     ? "text-foreground"
                     : "text-muted-foreground"
                 )}
@@ -137,12 +137,12 @@ export function Navbar() {
             {navItems.map((item) => (
               <Link
                 key={item.path}
-                href={item.path}
+                href={`/${locale}${item.path}`}
                 className={cn(
                   "text-sm font-medium transition-colors hover:text-foreground py-2",
                   pathname.includes(item.path) && item.path !== "/"
                     ? "text-foreground"
-                    : pathname === "/" && item.path === "/"
+                    : pathname === `/${locale}` && item.path === "/"
                     ? "text-foreground"
                     : "text-muted-foreground"
                 )}
