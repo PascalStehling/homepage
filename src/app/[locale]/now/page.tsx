@@ -4,7 +4,17 @@ import { books, nonTechnicalInterests, workExperience, skillCategories } from "@
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "now" });
-  return { title: t("title") };
+  const isGerman = locale === "de";
+  return {
+    title: t("title"),
+    description: isGerman
+      ? "Was Pascal Stehling gerade macht - aktuelle Projekte, Bücher und Interessen."
+      : "What Pascal Stehling is up to right now - current projects, books, and interests.",
+    alternates: {
+      canonical: `https://stehl.ing/${locale}/now`,
+      languages: { en: "https://stehl.ing/en/now", de: "https://stehl.ing/de/now" },
+    },
+  };
 }
 
 export default async function Now({ params }: { params: Promise<{ locale: string }> }) {

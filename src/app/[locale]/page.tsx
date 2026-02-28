@@ -1,8 +1,23 @@
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
+import type { Metadata } from "next";
 import { publications } from "@/app/[locale]/publications/data";
 import { PublicationCard } from "@/components/publication-card";
 import { SkillsTeaser } from "@/components/skills-teaser";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const isGerman = locale === "de";
+  return {
+    alternates: {
+      canonical: `https://stehl.ing/${locale}`,
+      languages: { en: "https://stehl.ing/en", de: "https://stehl.ing/de" },
+    },
+    description: isGerman
+      ? "Persönliche Website von Pascal Stehling, Data Engineer und Data Architect aus Potsdam."
+      : "Personal website of Pascal Stehling, Data Engineer and Data Architect based in Potsdam, Germany.",
+  };
+}
 import { LuArrowRight } from "react-icons/lu";
 import { socialItems } from "@/lib/personal-data";
 
