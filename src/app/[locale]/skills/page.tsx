@@ -1,5 +1,21 @@
 import { getTranslations } from "next-intl/server";
+import type { Metadata } from "next";
 import { skillCategories, milestones, nonTechnicalInterests } from "@/lib/personal-data";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const isGerman = locale === "de";
+  return {
+    title: isGerman ? "Fähigkeiten" : "Skills",
+    description: isGerman
+      ? "Technische Fähigkeiten und Interessen von Pascal Stehling - Python, Rust, Datenbanken, KI und mehr."
+      : "Technical skills and interests of Pascal Stehling - Python, Rust, databases, AI, and more.",
+    alternates: {
+      canonical: `https://stehl.ing/${locale}/skills`,
+      languages: { en: "https://stehl.ing/en/skills", de: "https://stehl.ing/de/skills" },
+    },
+  };
+}
 import { TimelineBar } from "@/components/timeline-bar";
 import { START_YEAR, END_YEAR, TOTAL_YEARS, getPosition } from "@/lib/timeline-utils";
 

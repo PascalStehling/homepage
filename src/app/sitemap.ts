@@ -7,7 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Generate routes for all locales
   const routes = locales.flatMap((locale) =>
-    ["", "/about", "/cv", "/publications", "/books"].map((route) => ({
+    ["", "/about", "/cv", "/publications", "/books", "/skills", "/now"].map((route) => ({
       url: `${baseUrl}/${locale}${route}`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,

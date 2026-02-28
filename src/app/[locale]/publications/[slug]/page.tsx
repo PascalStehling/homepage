@@ -3,6 +3,33 @@ import { formatDate } from "@/lib/utils";
 import Link from "next/link";
 import { LuArrowLeft, LuArrowUpRight } from "react-icons/lu";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string; locale: string }> }): Promise<Metadata> {
+  const { slug, locale } = await params;
+  const post = publications.find((p) => p.slug === slug);
+  if (!post) return {};
+  return {
+    title: post.title,
+    description: post.description.slice(0, 160),
+    authors: [{ name: post.authors }],
+    alternates: {
+      canonical: `https://stehl.ing/${locale}/publications/${slug}`,
+      languages: {
+        en: `https://stehl.ing/en/publications/${slug}`,
+        de: `https://stehl.ing/de/publications/${slug}`,
+      },
+    },
+    openGraph: {
+      title: post.title,
+      description: post.description.slice(0, 160),
+      type: "article",
+      publishedTime: post.date,
+      authors: [post.authors],
+      url: `https://stehl.ing/${locale}/publications/${slug}`,
+    },
+  };
+}
 
 export async function generateStaticParams() {
   return publications.map((post) => ({

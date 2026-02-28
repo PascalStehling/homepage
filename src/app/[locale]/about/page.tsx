@@ -1,5 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const isGerman = locale === "de";
+  return {
+    title: isGerman ? "Über mich" : "About Me",
+    description: isGerman
+      ? "Erfahre mehr über Pascal Stehling - Data Engineer und Data Architect aus Potsdam."
+      : "Learn more about Pascal Stehling - Data Engineer and Data Architect based in Potsdam, Germany.",
+    alternates: {
+      canonical: `https://stehl.ing/${locale}/about`,
+      languages: { en: "https://stehl.ing/en/about", de: "https://stehl.ing/de/about" },
+    },
+  };
+}
 
 export default async function About({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;

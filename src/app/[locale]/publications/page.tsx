@@ -1,6 +1,22 @@
 import { getTranslations } from "next-intl/server";
+import type { Metadata } from "next";
 import { publications } from "@/app/[locale]/publications/data";
 import { PublicationCard } from "@/components/publication-card";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const isGerman = locale === "de";
+  return {
+    title: isGerman ? "Publikationen" : "Publications",
+    description: isGerman
+      ? "Wissenschaftliche Publikationen und Arbeiten von Pascal Stehling."
+      : "Academic publications and papers by Pascal Stehling.",
+    alternates: {
+      canonical: `https://stehl.ing/${locale}/publications`,
+      languages: { en: "https://stehl.ing/en/publications", de: "https://stehl.ing/de/publications" },
+    },
+  };
+}
 
 export default async function Publications({
   params,

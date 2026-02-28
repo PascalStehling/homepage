@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+import type { Metadata } from "next";
 import {
   workExperience,
   educationHistory,
@@ -8,6 +9,21 @@ import {
   WorkExperience,
   Education,
 } from "@/lib/personal-data";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const isGerman = locale === "de";
+  return {
+    title: isGerman ? "Lebenslauf" : "CV",
+    description: isGerman
+      ? "Lebenslauf von Pascal Stehling - Berufserfahrung, Ausbildung und Fähigkeiten."
+      : "Curriculum vitae of Pascal Stehling - work experience, education, and skills.",
+    alternates: {
+      canonical: `https://stehl.ing/${locale}/cv`,
+      languages: { en: "https://stehl.ing/en/cv", de: "https://stehl.ing/de/cv" },
+    },
+  };
+}
 
 function TimelineItem({
   item,
