@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import type { Metadata } from "next";
+import { LuArrowRight } from "react-icons/lu";
 import { publications } from "@/app/[locale]/publications/data";
 import { PublicationCard } from "@/components/publication-card";
 import { SkillsTeaser } from "@/components/skills-teaser";
+import { socialItems } from "@/lib/personal-data";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -18,8 +20,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       : "Personal website of Pascal Stehling, Data Engineer and Data Architect based in Potsdam, Germany.",
   };
 }
-import { LuArrowRight } from "react-icons/lu";
-import { socialItems } from "@/lib/personal-data";
 
 export default async function Home({
   params,

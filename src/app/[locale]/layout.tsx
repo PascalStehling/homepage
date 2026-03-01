@@ -6,6 +6,7 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Analytics } from "@vercel/analytics/next";
 import { notFound } from "next/navigation";
+import { DelaunayBackground } from "@/components/delaunay-background";
 
 export const metadata: Metadata = {
   title: {
@@ -80,11 +81,12 @@ export default async function LocaleLayout({
       <NextIntlClientProvider messages={messages}>
       <ThemeProvider
         attribute="class"
-        defaultTheme="system"
+        defaultTheme="dark"
         enableSystem
         disableTransitionOnChange
       >
-        <div className="min-h-screen flex flex-col bg-background text-foreground">
+        <DelaunayBackground />
+        <div className="min-h-screen flex flex-col text-foreground">
           <Navbar />
           <main className="grow container mx-auto px-4 py-8">
             {children}
